@@ -1,18 +1,51 @@
-# MobileDev
-Project for Mobile Development in Android
+## Project for Mobile Development in Android
+
+#### Projectnaam: Project x
+
+#### Startdatum: 19/09/2017
+
+#### Team: 
+
+- Kenan Ekici
+
+- Pieter-Jan Kerfs
+
+#### Externe API: Nutritionix
+
+#### Branch: Development
+
+## 
+
+### Inleiding
 
 
-Mobile development project
+
+### Doelstellingen (Basic)
+
+Functionaliteiten
+	Producten scannen op voedingswaarden en allergieën
+	Ingenomen calorieën ingeven
+		voedingspatroon herkennen en kunnen verbeteren.	
+		--> Tracking 
+
+### Doelstellingen (Intermediate)
+
+Beweging? --> GPS + maps
+
+### Doelstellingen (Extra)
+
+Sharen op social accounts
+
+### Authentication
+
+Inloggen met social accounts
 
 
-Food information app
-"Foodie"
+### Environment (Local API)
 
+TBD
 
-BASIS
-Outpan API - Gtin voor de basis informatie van het product
-Fatsecret - API voor de voedingswaarden op te vragen --> Voor het dieet gedeelte van de APP
-
+### Workflow
 
 Lokaal profiel maken
 	Allergieën/Ziektes
@@ -23,20 +56,9 @@ Lokaal profiel maken
 	Leeftijd
 	Geslacht
 		Berekenen hoeveel calorieën men nodig heeft
-		
-Functionaliteiten
-	Producten scannen op voedingswaarden en allergieën
-	Ingenomen calorieën ingeven
-		voedingspatroon herkennen en kunnen verbeteren.	
-		--> Tracking 
 
 
-UITBREIDINGEN
-	Beweging? --> GPS + maps
-	
-	
+##### Extra references:
+Outpan API - Gtin voor de basis informatie van het product
+Fatsecret - API voor de voedingswaarden op te vragen --> Voor het dieet gedeelte van de APP
 
-
-EXTRAS
-Inloggen met social accounts
-Sharen op social accounts
