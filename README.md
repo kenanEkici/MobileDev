@@ -18,6 +18,16 @@
 
 ### Inleiding
 
+#### Elevator Pitch
+
+Door onze kennis in het veld, Kenan heeft aan een soortgelijke applicatie gewerkt tijdens zijn vakantiejob en Pieter-Jan heeft al enkele jaren werkervaring in een supermarkt, kwamen we op het idee om een applicatie te maken om de voedingswaarden op te vragen aan de hand van een barcode.
+Deze applicatie heeft als doel om de gebruiker alle nodige informatie te geven over de voedingswaren die in het product zitten. 
+De gebruiker kan via de app een eigen profiel geven en zo aangeven welke allergieën van toepassing zijn, ook kan men door middel van het profiel de dagelijkse aanbevolen hoeveelheid calorieën bepalen. 
+Door gebruik te maken van dit profiel kan de applicatie de gebruiker waarschuwen indien het product een allergische reactie veroorzaakt, alsook kan de applicatie de gebruiker verwittigen om meer of minder calorieën op te nemen op een dag.
+
+**Technisch**
+
+Deze one-tier applicatie maakt gebruik van de Nutritionix API om hier alle informatie over de voedingswaren te halen, deze kunnen we dan via de applicatie zelf verwerken en zo de gebruiker alle nuttige informatie geven. Profielen worden lokaal bijgehouden op het device.
 
 
 ### Doelstellingen (Basic)
