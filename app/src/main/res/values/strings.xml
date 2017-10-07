@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Calorify</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="data_notification">Your profile is private and only stored locally</string>
+    <string name="button_register">Create a new profile</string>
+    <string name="slogan">Managing your consumption easier than ever</string>
 </resources>
