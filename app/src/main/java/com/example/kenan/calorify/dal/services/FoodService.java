@@ -1,6 +1,6 @@
-package com.example.kenan.calorify.datalayer.services;
+package com.example.kenan.calorify.dal.services;
 
-import com.example.kenan.calorify.datalayer.models.Product;
+import com.example.kenan.calorify.dl.models.Product;
 
 import java.util.List;
 

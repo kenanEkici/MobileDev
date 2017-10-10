@@ -1,4 +1,4 @@
-package com.example.kenan.calorify.datalayer.models;
+package com.example.kenan.calorify.dl.models;
 
 /**
  * Created by Kenan on 10/10/2017.

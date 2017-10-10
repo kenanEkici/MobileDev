@@ -20,7 +20,7 @@ public class ScanActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //set the main content layout of the Activity
-        setContentView(R.layout.activity_scan);
+        setContentView(R.layout.scan_activity_page);
         scanBar(findViewById(R.id.activity_scan));
     }
 

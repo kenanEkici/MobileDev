@@ -20,23 +20,17 @@
             android:value="true" />
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
-            android:value="com.example.kenan.calorify.datalayer.models" />
+            android:value="com.example.kenan.calorify.dl.models" />
 
         <uses-permission android:name="android.permission.CAMERA" />
 
-        <activity android:name=".LaunchActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".StartActivity"
-            android:label="@string/title_activity_start"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".MenuPage" />
         <activity android:name=".ScanActivity"></activity>
     </application>
 

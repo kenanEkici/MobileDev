@@ -1,5 +1,6 @@
-package com.example.kenan.calorify.datalayer.models;
+package com.example.kenan.calorify.dl.models;
 
+import com.example.kenan.calorify.dl.enums.Gender;
 import com.orm.SugarRecord;
 
 /**

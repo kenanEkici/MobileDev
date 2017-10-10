@@ -1,4 +1,4 @@
-package com.example.kenan.calorify.datalayer.models;
+package com.example.kenan.calorify.dl.enums;
 
 /**
  * Created by Kenan on 7/10/2017.

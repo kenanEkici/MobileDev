@@ -1,12 +1,8 @@
-package com.example.kenan.calorify.datalayer.services;
+package com.example.kenan.calorify.dal.services;
 
-import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.kenan.calorify.datalayer.models.Product;
-
 import java.io.IOException;
-import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;

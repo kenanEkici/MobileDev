@@ -1,6 +1,6 @@
-package com.example.kenan.calorify.datalayer.repos;
+package com.example.kenan.calorify.dal.repos;
 
-import com.example.kenan.calorify.datalayer.models.User;
+import com.example.kenan.calorify.dl.models.User;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.kenan.calorify.datalayer.models;
+package com.example.kenan.calorify.dl.models;
 
 import com.orm.SugarRecord;
 
