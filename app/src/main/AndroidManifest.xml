@@ -22,17 +22,22 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.example.kenan.calorify.datalayer.models" />
 
+        <uses-permission android:name="android.permission.CAMERA" />
+
         <activity android:name=".LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StartActivity"
+        <activity
+            android:name=".StartActivity"
             android:label="@string/title_activity_start"
             android:theme="@style/AppTheme" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MenuPage"></activity>
+        <activity android:name=".MenuPage" />
+        <activity android:name=".datalayer.ScanActivity"></activity>
     </application>
 
 </manifest>

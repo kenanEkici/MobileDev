@@ -58,7 +58,7 @@ public class User extends SugarRecord<User> {
     }
 
     public void setBmi(double height, double weight) {
-        this.bmi = weight / Math.pow(weight,2);
+        this.bmi = weight / Math.pow(height,2);
     }
 
     public Gender getGender() {
