@@ -1,4 +1,4 @@
-package com.example.kenan.calorify.datalayer;
+package com.example.kenan.calorify;
 
 import android.app.Activity;
 import android.app.AlertDialog;

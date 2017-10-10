@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
-import com.example.kenan.calorify.datalayer.ScanActivity;
+import com.example.kenan.calorify.datalayer.services.FoodServiceImpl;
+
+import java.io.IOException;
 
 public class MenuPage extends AppCompatActivity {
 
@@ -17,9 +20,21 @@ public class MenuPage extends AppCompatActivity {
 
         Button scanButton = (Button) findViewById(R.id.scan_button);
         scanButton.setOnClickListener((v) -> {
-            Intent intent = new Intent(getApplicationContext(), ScanActivity.class);
+            //Intent intent = new Intent(getApplicationContext(), ScanActivity.class);
+            //startActivityForResult(intent, 0);
+            try {
+                FoodServiceImpl foodapi = new FoodServiceImpl();
+                try {
+                    foodapi.doGetRequest();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-            startActivityForResult(intent, 0);
+            } catch(Exception ex)
+            {
+                String exx = ex.getMessage();
+            }
+
         });
     }
 }

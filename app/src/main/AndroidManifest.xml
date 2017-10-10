@@ -37,7 +37,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MenuPage" />
-        <activity android:name=".datalayer.ScanActivity"></activity>
+        <activity android:name=".ScanActivity"></activity>
     </application>
 
 </manifest>
