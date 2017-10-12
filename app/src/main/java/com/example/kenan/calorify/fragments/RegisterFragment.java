@@ -24,6 +24,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
 
     private OnFragmentInteractionListener mListener;
     private View view;
+    private Button registerButton;
 
     public static RegisterFragment newInstance() {
         return new RegisterFragment();
@@ -35,16 +36,15 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
         setRetainInstance(true);
 
         view = inflater.inflate(R.layout.register_page_fragment, container, false);
-        Button button = (Button) view.findViewById(R.id.create_profile);
+        registerButton = (Button) view.findViewById(R.id.create_profile);
         Spinner gender = (Spinner) view.findViewById(R.id.gender);
-
         Gender[] genders = { Gender.Male, Gender.Female, Gender.Other };
 
         ArrayAdapter<Gender> adapter = new ArrayAdapter<Gender>(getActivity(),
                 android.R.layout.simple_spinner_item, genders);
         gender.setAdapter(adapter);
 
-        button.setOnClickListener(this);
+        registerButton.setOnClickListener(this);
 
         return view;
     }
@@ -90,6 +90,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(tryCreateUser()) {
+            registerButton.setEnabled(false);
             mListener.onRegisterComplete();
         }
     }

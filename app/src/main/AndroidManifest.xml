@@ -24,6 +24,8 @@
 
         <uses-permission android:name="android.permission.CAMERA" />
 
+        <activity android:name=".MenuActivity"/>
+        <activity android:name=".SettingsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

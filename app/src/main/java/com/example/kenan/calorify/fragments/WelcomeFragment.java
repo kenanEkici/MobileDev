@@ -53,10 +53,10 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        mListener.onFragmentInteraction();
+        mListener.onRegisterButtonClicked();
     }
 
     public interface OnFragmentInteractionListener {
-        void onFragmentInteraction();
+        void onRegisterButtonClicked();
     }
 }

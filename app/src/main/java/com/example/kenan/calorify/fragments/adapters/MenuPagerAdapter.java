@@ -29,11 +29,11 @@ public class MenuPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0: // Fragment # 0 - This will show FirstFragment
+            case 0:
                 return SchemeFragment.newInstance();
-            case 1: // Fragment # 0 - This will show FirstFragment
+            case 1:
                 return ScanFragment.newInstance();
-            case 2: // Fragment # 0 - This will show FirstFragment
+            case 2:
                 return ProfileFragment.newInstance();
             default:
                 return null;
