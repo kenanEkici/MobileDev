@@ -12,11 +12,17 @@ import com.example.kenan.calorify.R;
  * Created by Kenan on 10/10/2017.
  */
 
-public class MenuFragment extends Fragment {
+public class ProfileFragment extends Fragment {
+
+    public static ProfileFragment newInstance() {
+        return new ProfileFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.menu_page_fragment, container, false);
+        setHasOptionsMenu(true);
+        return inflater.inflate(R.layout.profile_page_fragment, container, false);
     }
 }

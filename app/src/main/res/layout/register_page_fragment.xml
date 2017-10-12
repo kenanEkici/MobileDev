@@ -1,58 +1,64 @@
-<LinearLayout android:layout_height="match_parent"
+<ScrollView android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/register"
-    android:orientation="vertical"
-    android:gravity="center">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/data_notification"
-        android:textSize="15sp"
-        android:layout_marginTop="20dp"/>
+    <LinearLayout android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/register"
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/full_name"
-        android:layout_marginTop="20dp"
-        android:hint="Full name"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/data_notification"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"/>
 
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/age"
-        android:layout_marginTop="20dp"
-        android:hint="Age"/>
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/full_name"
+            android:layout_marginTop="20dp"
+            android:hint="Full name"/>
 
-    <Spinner
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/gender"
-        android:layout_marginTop="20dp"
-        />
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/age"
+            android:layout_marginTop="20dp"
+            android:hint="Age"/>
 
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/height"
-        android:layout_marginTop="20dp"
-        android:hint="Height (meters)"/>
+        <Spinner
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/gender"
+            android:layout_marginTop="20dp"
+            />
 
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/weight"
-        android:layout_marginTop="20dp"
-        android:hint="Weight (kg)"/>
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/height"
+            android:layout_marginTop="20dp"
+            android:hint="Height (meters)"/>
 
-    <Button
-        android:id="@+id/create_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create"
-        android:layout_marginTop="20dp"/>
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/weight"
+            android:layout_marginTop="20dp"
+            android:hint="Weight (kg)"/>
 
-</LinearLayout>
+        <Button
+            android:id="@+id/create_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+</ScrollView>
 

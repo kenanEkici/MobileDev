@@ -4,4 +4,8 @@
     <string name="data_notification">Your profile is private and only stored locally</string>
     <string name="button_register">Create a new profile</string>
     <string name="slogan">Managing your consumption easier than ever</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

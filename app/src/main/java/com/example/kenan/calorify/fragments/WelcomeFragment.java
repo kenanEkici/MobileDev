@@ -3,18 +3,11 @@ package com.example.kenan.calorify.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.Toast;
-
-import com.example.kenan.calorify.MainActivity;
 import com.example.kenan.calorify.R;
-import com.example.kenan.calorify.dl.enums.Gender;
 
 /**
  * Created by Kenan on 10/10/2017.
