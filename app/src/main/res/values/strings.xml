@@ -6,4 +6,6 @@
     <string name="slogan">Managing your consumption easier than ever</string>
     <string name="action_settings">settings</string>
     <string name="delete_account">Delete profile</string>
+    <string name="created_user">Profile successfully created!</string>
+
 </resources>

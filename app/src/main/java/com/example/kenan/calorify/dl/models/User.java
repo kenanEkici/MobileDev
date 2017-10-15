@@ -16,6 +16,7 @@ public class User extends SugarRecord<User> {
     private double height;
     private int age;
     private double bmi;
+    private Scheme scheme;
 
     public User(){
     }

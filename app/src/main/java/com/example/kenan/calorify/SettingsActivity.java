@@ -1,15 +1,10 @@
 package com.example.kenan.calorify;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
-
-import com.example.kenan.calorify.R;
 import com.example.kenan.calorify.dal.repos.UserRepository;
 import com.example.kenan.calorify.helpers.AuthenticationHelper;
 

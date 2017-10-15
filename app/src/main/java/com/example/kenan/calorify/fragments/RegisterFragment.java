@@ -3,6 +3,7 @@ package com.example.kenan.calorify.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,6 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
     }
 
     private boolean tryCreateUser(){
-
         try{
             EditText name = (EditText) view.findViewById(R.id.full_name);
             EditText age = (EditText) view.findViewById(R.id.age);
@@ -92,6 +92,9 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
         if(tryCreateUser()) {
             registerButton.setEnabled(false);
             mListener.onRegisterComplete();
+        } else {
+            //validation here
+            registerButton.setEnabled(true);
         }
     }
 
