@@ -79,6 +79,7 @@ public class ScanFragment extends Fragment {
                 try {
                     Gson gson = new Gson();
                     ProductDTO response = gson.fromJson(foodInfoFromCodeTask.execute(contents).get(), ProductDTO.class);
+
                     if (response.getProducts() != null) {
                         result.setText(response.getProducts()[0].getBrandName());
                     } else {

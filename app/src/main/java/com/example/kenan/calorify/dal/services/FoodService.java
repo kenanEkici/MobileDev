@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -27,7 +28,7 @@ public class FoodService {
                 Request request = new Request.Builder()
                         .addHeader("x-app-id","4359abb2")
                         .addHeader("x-app-key","69316a39aa6242115b03d9aa15498b66")
-                        .url("https://trackapi.nutritionix.com/v2/search/item?upc="+params)
+                        .url("https://trackapi.nutritionix.com/v2/search/item?upc="+ params[0])
                         .build();
 
                 Response response = client.newCall(request).execute();
