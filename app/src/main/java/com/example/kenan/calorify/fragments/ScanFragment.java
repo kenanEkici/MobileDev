@@ -52,6 +52,8 @@ public class ScanFragment extends Fragment {
 
         foodService = new FoodService();
 
+
+
         if (savedInstanceState != null){
             String scanResult = savedInstanceState.getString("scan_result");
             if (scanResult != null) {
@@ -85,6 +87,9 @@ public class ScanFragment extends Fragment {
                     } else {
                         result.setText("Not found");
                     }
+
+                    ProductDialogFragment dialog = new ProductDialogFragment();
+                    dialog.show(getFragmentManager(), "ProductDialogFragment");
 
 
                 } catch (InterruptedException e) {
