@@ -1,7 +1,19 @@
 package com.example.kenan.calorify.dl.models;
 
+import android.support.v7.util.SortedList;
+
 import com.example.kenan.calorify.dl.enums.Gender;
 import com.orm.SugarRecord;
+
+import org.joda.time.LocalDateTime;
+
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.UUID;
 
 /**
  * Created by Kenan on 7/10/2017.
@@ -18,7 +30,15 @@ public class User extends SugarRecord<User> {
     private double bmi;
     private Scheme scheme;
 
+    private final LocalDateTime registerDate;
+    private Map<UUID, Product> productSortedMap = new TreeMap<UUID, Product>();
+    private ArrayList<Scan> scanHistory = new ArrayList<Scan>();
+    private ArrayList<Consumption> consumptionHistory = new ArrayList<Consumption>();
+
+
+
     public User(){
+        registerDate = new LocalDateTime();
     }
 
     public User(String fullName, Gender gender, double weight, double height, int age, boolean isActive){
@@ -29,6 +49,8 @@ public class User extends SugarRecord<User> {
         setHeight(height);
         setAge(age);
         setBmi(weight,height);
+        registerDate = new LocalDateTime();
+
     }
 
     public double getWeight() {
@@ -90,5 +112,26 @@ public class User extends SugarRecord<User> {
     @Override
     public String toString() {
         return getFullName();
+    }
+
+    public Product getProductFromSortedMap(UUID productID){
+        return productSortedMap.get(productID);
+    }
+
+    public void addProductToSortedMap(Product prod) {
+        productSortedMap.put(UUID.randomUUID(), prod);
+    }
+
+    public ArrayList<Consumption> getConsumptionHistory() {
+        return consumptionHistory;
+    }
+
+    public ArrayList<Scan> getScanHistory() {
+        return scanHistory;
+    }
+
+
+    public LocalDateTime getRegisterDate() {
+        return registerDate;
     }
 }
