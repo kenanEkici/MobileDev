@@ -14,6 +14,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.kenan.calorify.R;
+import com.example.kenan.calorify.dal.repos.SchemeRepository;
+import com.example.kenan.calorify.dl.models.Day;
+import com.example.kenan.calorify.dl.models.Product;
 import com.example.kenan.calorify.fragments.adapters.CustomExpandableListAdapter;
 
 import java.util.ArrayList;
@@ -35,8 +38,7 @@ public class SchemeFragment extends Fragment {
     ExpandableListView expandableListView;
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
-    HashMap<String, List<String>> expandableListDetail;
-
+    HashMap<String, List<String>> scheme;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,36 +46,21 @@ public class SchemeFragment extends Fragment {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
         view = inflater.inflate(R.layout.scheme_page_fragment, container, false);
-
-        //HashMap<String, List<String>> expandableListDetail = new HashMap<String, List<String>>();
-
-        //child
-//        List<String> basketball = new ArrayList<String>();
-//        basketball.add("United States");
-//        basketball.add("Spain");
-//        basketball.add("Argentina");
-//        basketball.add("France");
-//        basketball.add("Russia");
-
-//        expandableListDetail.put("BASKETBALL TEAMS", basketball); //parent
-
-//        expandableListView = (ExpandableListView) view.findViewById(R.id.expandableListView);
-//        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
-//        expandableListAdapter = new CustomExpandableListAdapter(getContext(), expandableListTitle, expandableListDetail);
-//        expandableListView.setAdapter(expandableListAdapter);
-//
-//        expandableListView.setOnChildClickListener((parent, v, groupPosition, childPosition, id) ->  {
-//                Toast.makeText(
-//                        getContext(),
-//                        expandableListTitle.get(groupPosition)
-//                                + " -> "
-//                                + expandableListDetail.get(
-//                                expandableListTitle.get(groupPosition)).get(
-//                                childPosition), Toast.LENGTH_SHORT
-//                ).show();
-//                return false;
-//        });
-
+        updateScheme();
         return view;
+    }
+
+    private void updateScheme() {
+        scheme = new SchemeRepository().getSchemeOfActiveUser();
+        expandableListView = (ExpandableListView) view.findViewById(R.id.expandableListView);
+        expandableListTitle = new ArrayList<>(scheme.keySet());
+        expandableListAdapter = new CustomExpandableListAdapter(getContext(), expandableListTitle, scheme);
+        expandableListView.setAdapter(expandableListAdapter);
+
+        expandableListView.setOnChildClickListener((parent, v, groupPosition, childPosition, id) ->  {
+            //hier zou je dezelfde modal kunnen openen als je een product scant om
+            //details te zien van een geconsumeerde product
+            return false;
+        });
     }
 }

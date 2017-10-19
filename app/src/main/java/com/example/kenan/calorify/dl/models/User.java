@@ -28,13 +28,11 @@ public class User extends SugarRecord<User> {
     private double height;
     private int age;
     private double bmi;
-    private Scheme scheme;
 
     private final LocalDateTime registerDate;
-    private Map<UUID, Product> productSortedMap = new TreeMap<UUID, Product>();
-    private ArrayList<Scan> scanHistory = new ArrayList<Scan>();
-    private ArrayList<Consumption> consumptionHistory = new ArrayList<Consumption>();
-
+    //private Map<UUID, Product> productSortedMap = new TreeMap<UUID, Product>();
+    //private ArrayList<Scan> scanHistory = new ArrayList<Scan>();
+    //private ArrayList<Consumption> consumptionHistory = new ArrayList<Consumption>();
 
 
     public User(){
@@ -50,7 +48,6 @@ public class User extends SugarRecord<User> {
         setAge(age);
         setBmi(weight,height);
         registerDate = new LocalDateTime();
-
     }
 
     public double getWeight() {
@@ -114,21 +111,21 @@ public class User extends SugarRecord<User> {
         return getFullName();
     }
 
-    public Product getProductFromSortedMap(UUID productID){
-        return productSortedMap.get(productID);
-    }
-
-    public void addProductToSortedMap(Product prod) {
-        productSortedMap.put(UUID.randomUUID(), prod);
-    }
-
-    public ArrayList<Consumption> getConsumptionHistory() {
-        return consumptionHistory;
-    }
-
-    public ArrayList<Scan> getScanHistory() {
-        return scanHistory;
-    }
+//    public Product getProductFromSortedMap(UUID productID){
+//        return productSortedMap.get(productID);
+//    }
+//
+//    public void addProductToSortedMap(Product prod) {
+//        productSortedMap.put(UUID.randomUUID(), prod);
+//    }
+//
+//    public ArrayList<Consumption> getConsumptionHistory() {
+//        return consumptionHistory;
+//    }
+//
+//    public ArrayList<Scan> getScanHistory() {
+//        return scanHistory;
+//    }
 
 
     public LocalDateTime getRegisterDate() {

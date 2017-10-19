@@ -1,30 +1,27 @@
 package com.example.kenan.calorify.fragments;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
-
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 import com.example.kenan.calorify.R;
+import com.example.kenan.calorify.dal.repos.ProductRepository;
 import com.example.kenan.calorify.dal.services.FoodService;
 import com.example.kenan.calorify.dl.models.Product;
 import com.example.kenan.calorify.dl.models.ProductDTO;
 import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
+
 import java.util.concurrent.ExecutionException;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -35,7 +32,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class ScanFragment extends Fragment {
 
-    public TextView result;
+
     private FoodService foodService;
 
     public static ScanFragment newInstance() {
@@ -48,18 +45,12 @@ public class ScanFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.scan_page_fragment, container, false);
         Button scanButton = (Button) view.findViewById(R.id.scan_button);
-        result = (TextView) view.findViewById(R.id.result);
+
+        ProductRepository repo = new ProductRepository();
+        ListView productHistory = (ListView) view.findViewById(R.id.list_scanned_products);
+        productHistory.setAdapter(new ArrayAdapter<>(getContext(),R.layout.list_products_item, repo.getAllProducts()));
 
         foodService = new FoodService();
-
-
-
-        if (savedInstanceState != null){
-            String scanResult = savedInstanceState.getString("scan_result");
-            if (scanResult != null) {
-                result.setText(scanResult);
-            }
-        }
 
         scanButton.setOnClickListener(v ->{
             Intent intent = new Intent("com.google.zxing.client.android.SCAN");
@@ -81,16 +72,20 @@ public class ScanFragment extends Fragment {
                 try {
                     Gson gson = new Gson();
                     ProductDTO response = gson.fromJson(foodInfoFromCodeTask.execute(contents).get(), ProductDTO.class);
+                    ProductRepository repo = new ProductRepository();
 
                     if (response.getProducts() != null) {
-                        result.setText(response.getProducts()[0].getBrandName());
+                        Product scannedProduct = response.getProducts()[0];
+                        scannedProduct.setScannedAt(LocalDate.now().toString());
+                        repo.addProduct(scannedProduct);
+                        Bundle args = new Bundle();
+                        ProductDialogFragment dialog = new ProductDialogFragment();
+                        args.putLong("productId", scannedProduct.getId());
+                        dialog.setArguments(args);
+                        dialog.show(getFragmentManager(), "ProductDialogFragment");
                     } else {
-                        result.setText("Not found");
+                        Toast.makeText(getContext(), "Product not found!", Toast.LENGTH_LONG).show();
                     }
-
-                    ProductDialogFragment dialog = new ProductDialogFragment();
-                    dialog.show(getFragmentManager(), "ProductDialogFragment");
-
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -103,11 +98,7 @@ public class ScanFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        // Make sure to call the super method so that the states of our views are saved
-        super.onSaveInstanceState(outState);
-        // Save our own state now
-        outState.putString("scan_result", result.getText().toString());
-    }
 }
+
+
+

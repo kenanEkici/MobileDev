@@ -2,6 +2,10 @@ package com.example.kenan.calorify.dl.models;
 
 import com.facebook.stetho.json.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
+import com.orm.SugarRecord;
+
+import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 
 import java.util.List;
 
@@ -9,7 +13,12 @@ import java.util.List;
  * Created by Kenan on 10/10/2017.
  */
 
-public class Product {
+public class Product extends SugarRecord<Product>{
+
+    private Day consumedAt;
+    private double consumedQuantity;
+    private String consumedUnit;
+    private String scannedAt;
 
     @SerializedName("food_name")
     private String foodName;
@@ -52,6 +61,38 @@ public class Product {
 
     @SerializedName("nf_potassium")
     private double potassium;
+
+    public Day getConsumedAt() {
+        return consumedAt;
+    }
+
+    public void setConsumedAt(Day consumedAt) {
+        this.consumedAt = consumedAt;
+    }
+
+    public double getConsumedQuantity() {
+        return consumedQuantity;
+    }
+
+    public void setConsumedQuantity(double consumedQuantity) {
+        this.consumedQuantity = consumedQuantity;
+    }
+
+    public String getConsumedUnit() {
+        return consumedUnit;
+    }
+
+    public void setConsumedUnit(String consumedUnit) {
+        this.consumedUnit = consumedUnit;
+    }
+
+    public String getScannedAt() {
+        return scannedAt;
+    }
+
+    public void setScannedAt(String scannedAt) {
+        this.scannedAt = scannedAt;
+    }
 
     public String getFoodName() {
         return foodName;
@@ -163,5 +204,10 @@ public class Product {
 
     public void setPotassium(double potassium) {
         this.potassium = potassium;
+    }
+
+    @Override
+    public String toString(){
+        return getBrandName();
     }
 }
