@@ -21,20 +21,13 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //inits
         super.onCreate(savedInstanceState);
-        getSupportActionBar().show();
         setContentView(R.layout.page_menu);
+
+        if (getSupportActionBar() != null)
+            getSupportActionBar().show();
 
         AuthenticationHelper.continueToMain(getApplicationContext());
         initMenu();
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-            super.onBackPressed();
-        } else {
-            finish();
-        }
     }
 
     @Override
@@ -64,6 +57,12 @@ public class MenuActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            super.onBackPressed();
+        } else {
+            finish();
+        }
+    }
 }

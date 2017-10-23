@@ -30,7 +30,6 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_welcome, container, false);
         registerButton = (Button) view.findViewById(R.id.button_register);
         registerButton.setOnClickListener(this);
-
         return view;
     }
 

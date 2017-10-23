@@ -34,16 +34,19 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setRetainInstance(true);
-
         view = inflater.inflate(R.layout.fragment_register, container, false);
+
+        //get elements
         registerButton = (Button) view.findViewById(R.id.create_profile);
         Spinner gender = (Spinner) view.findViewById(R.id.gender);
         Gender[] genders = { Gender.Male, Gender.Female, Gender.Other };
 
+        //fill in elements
         ArrayAdapter<Gender> adapter = new ArrayAdapter<Gender>(getActivity(),
                 android.R.layout.simple_spinner_item, genders);
         gender.setAdapter(adapter);
 
+        //set listener
         registerButton.setOnClickListener(this);
 
         return view;

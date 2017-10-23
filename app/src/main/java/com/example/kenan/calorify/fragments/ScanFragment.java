@@ -16,12 +16,8 @@ import com.example.kenan.calorify.dal.services.FoodService;
 import com.example.kenan.calorify.dl.models.Product;
 import com.example.kenan.calorify.dl.models.ProductDTO;
 import com.google.gson.Gson;
-
 import org.joda.time.LocalDate;
-
 import java.util.concurrent.ExecutionException;
-
-import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
 /**
@@ -43,19 +39,21 @@ public class ScanFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.menu_scan_frag, container, false);
         Button scanButton = (Button) view.findViewById(R.id.scan_button);
+        ListView productHistory = (ListView) view.findViewById(R.id.list_scanned_products);
 
         ProductRepository repo = new ProductRepository();
-        ListView productHistory = (ListView) view.findViewById(R.id.list_scanned_products);
-        productHistory.setAdapter(new ArrayAdapter<>(getContext(),R.layout.list_products_item, repo.getAllProducts()));
-
         foodService = new FoodService();
 
+        productHistory.setAdapter(new ArrayAdapter<>(getContext(),R.layout.list_products_item, repo.getAllProducts()));
+
+        //set listener
         scanButton.setOnClickListener(v ->{
+            //open a barcode scanner if available
             Intent intent = new Intent("com.google.zxing.client.android.SCAN");
             intent.putExtra("com.google.zxing.client.android.SCAN.SCAN_MODE", "QR_CODE_MODE");
             startActivityForResult(intent, 0);
         });
-        setHasOptionsMenu(true);
+
         return view;
     }
 
@@ -64,8 +62,8 @@ public class ScanFragment extends Fragment {
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
                 String contents = intent.getStringExtra("SCAN_RESULT");
-                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
 
+                //start task to get product from api
                 FoodService.FoodInfoFromCodeTask foodInfoFromCodeTask = foodService.new FoodInfoFromCodeTask();
                 try {
                     Gson gson = new Gson();
@@ -90,7 +88,7 @@ public class ScanFragment extends Fragment {
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
-            } else if (resultCode == RESULT_CANCELED) {
+            } else {
                 // Handle cancel
             }
         }

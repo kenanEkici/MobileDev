@@ -19,6 +19,7 @@ public class Product extends SugarRecord<Product>{
     private double consumedQuantity;
     private String consumedUnit;
     private String scannedAt;
+    private double calculatedCalories;
 
     @SerializedName("food_name")
     private String foodName;
@@ -204,6 +205,14 @@ public class Product extends SugarRecord<Product>{
 
     public void setPotassium(double potassium) {
         this.potassium = potassium;
+    }
+
+    public double getCalculatedCalories() {
+        return calculatedCalories;
+    }
+
+    public void setCalculatedCalories(double calculatedCalories) {
+        this.calculatedCalories = calculatedCalories;
     }
 
     @Override

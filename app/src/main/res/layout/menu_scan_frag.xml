@@ -11,19 +11,20 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Historiek gescande producten"
+        android:text="@string/history"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
         android:gravity="center"/>
 
     <ListView
         android:layout_height="0dip"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:id="@+id/list_scanned_products"
-        />
+        android:id="@+id/list_scanned_products"/>
 
     <Button android:id="@+id/scan_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Scan new product"/>
+        android:text="@string/scan_product"/>
 
 </LinearLayout>

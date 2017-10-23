@@ -1,4 +1,4 @@
-package com.example.kenan.calorify.dl.interactors;
+package com.example.kenan.calorify.helpers;
 
 import com.example.kenan.calorify.dl.models.User;
 

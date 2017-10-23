@@ -22,7 +22,9 @@ public class MainActivity extends AppCompatActivity implements WelcomeFragment.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.page_main);
         Stetho.initializeWithDefaults(this);
-        getSupportActionBar().hide();
+
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
 
         AuthenticationHelper.continueToMenu(getApplicationContext());
         checkFragments();

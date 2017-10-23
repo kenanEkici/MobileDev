@@ -7,8 +7,9 @@
     <string name="action_settings">settings</string>
     <string name="delete_account">Delete profile</string>
     <string name="created_user">Profile successfully created!</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="history">History scanned products</string>
+    <string name="scan_product">Scan new product</string>
+    <string name="hint_consume">Consumed amount</string>
+    <string name="consumed_unit">Eenheid</string>
+    <string name="add_product_button">Add product to scheme</string>
 </resources>

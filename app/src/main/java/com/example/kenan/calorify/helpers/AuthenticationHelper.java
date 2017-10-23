@@ -12,11 +12,9 @@ import com.example.kenan.calorify.dal.repos.UserRepository;
  */
 
 public class AuthenticationHelper {
-    public static boolean isActiveUserPresent() {
+    private static boolean isActiveUserPresent() {
         UserRepository repository = new UserRepository();
-        if (repository.getActiveUser() != null)
-            return true;
-        return false;
+        return repository.getActiveUser() != null;
     }
 
     public static void continueToMenu(Context context){
