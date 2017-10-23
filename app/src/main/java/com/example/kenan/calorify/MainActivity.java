@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.example.kenan.calorify.fragments.RegisterFragment;
 import com.example.kenan.calorify.fragments.WelcomeFragment;
 import com.example.kenan.calorify.helpers.AuthenticationHelper;
+import com.facebook.stetho.Stetho;
 
 public class MainActivity extends AppCompatActivity implements WelcomeFragment.OnFragmentInteractionListener,
         RegisterFragment.OnFragmentInteractionListener {
@@ -19,7 +20,8 @@ public class MainActivity extends AppCompatActivity implements WelcomeFragment.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_page);
+        setContentView(R.layout.page_main);
+        Stetho.initializeWithDefaults(this);
         getSupportActionBar().hide();
 
         AuthenticationHelper.continueToMenu(getApplicationContext());

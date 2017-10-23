@@ -1,23 +1,15 @@
 package com.example.kenan.calorify;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.os.Handler;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.example.kenan.calorify.dal.repos.UserRepository;
 import com.example.kenan.calorify.fragments.adapters.MenuPagerAdapter;
-import com.example.kenan.calorify.fragments.RegisterFragment;
-import com.example.kenan.calorify.fragments.WelcomeFragment;
 import com.example.kenan.calorify.helpers.AuthenticationHelper;
 import com.facebook.stetho.Stetho;
 
@@ -29,9 +21,8 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //inits
         super.onCreate(savedInstanceState);
-        Stetho.initializeWithDefaults(this);
         getSupportActionBar().show();
-        setContentView(R.layout.menu_page);
+        setContentView(R.layout.page_menu);
 
         AuthenticationHelper.continueToMain(getApplicationContext());
         initMenu();

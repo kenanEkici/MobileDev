@@ -3,7 +3,6 @@ package com.example.kenan.calorify.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +35,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         setRetainInstance(true);
 
-        view = inflater.inflate(R.layout.register_page_fragment, container, false);
+        view = inflater.inflate(R.layout.fragment_register, container, false);
         registerButton = (Button) view.findViewById(R.id.create_profile);
         Spinner gender = (Spinner) view.findViewById(R.id.gender);
         Gender[] genders = { Gender.Male, Gender.Female, Gender.Other };

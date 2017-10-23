@@ -27,7 +27,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setRetainInstance(true);
-        View view = inflater.inflate(R.layout.welcome_page_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_welcome, container, false);
         registerButton = (Button) view.findViewById(R.id.button_register);
         registerButton.setOnClickListener(this);
 

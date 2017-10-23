@@ -23,6 +23,6 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.profile_page_fragment, container, false);
+        return inflater.inflate(R.layout.menu_profile_frag, container, false);
     }
 }

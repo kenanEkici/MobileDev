@@ -14,7 +14,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings_page);
+        setContentView(R.layout.page_settings);
 
         Button deleteButton = (Button) findViewById(R.id.delete_profile);
         UserRepository userRepository = new UserRepository();

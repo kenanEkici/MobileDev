@@ -41,7 +41,7 @@ public class SchemeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
-        view = inflater.inflate(R.layout.scheme_page_fragment, container, false);
+        view = inflater.inflate(R.layout.menu_scheme_frag, container, false);
         updateScheme();
         return view;
     }

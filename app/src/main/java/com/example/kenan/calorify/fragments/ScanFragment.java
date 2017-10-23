@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.example.kenan.calorify.R;
@@ -19,7 +18,6 @@ import com.example.kenan.calorify.dl.models.ProductDTO;
 import com.google.gson.Gson;
 
 import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
 
 import java.util.concurrent.ExecutionException;
 
@@ -43,7 +41,7 @@ public class ScanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.scan_page_fragment, container, false);
+        View view = inflater.inflate(R.layout.menu_scan_frag, container, false);
         Button scanButton = (Button) view.findViewById(R.id.scan_button);
 
         ProductRepository repo = new ProductRepository();
@@ -79,10 +77,10 @@ public class ScanFragment extends Fragment {
                         scannedProduct.setScannedAt(LocalDate.now().toString());
                         repo.addProduct(scannedProduct);
                         Bundle args = new Bundle();
-                        ProductDialogFragment dialog = new ProductDialogFragment();
+                        ScannedProductDialogFragment dialog = new ScannedProductDialogFragment();
                         args.putLong("productId", scannedProduct.getId());
                         dialog.setArguments(args);
-                        dialog.show(getFragmentManager(), "ProductDialogFragment");
+                        dialog.show(getFragmentManager(), "ScannedProductDialogFragment");
                     } else {
                         Toast.makeText(getContext(), "Product not found!", Toast.LENGTH_LONG).show();
                     }
