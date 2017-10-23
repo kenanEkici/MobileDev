@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/height"
             android:layout_marginTop="20dp"
-            android:hint="Height (meters)"/>
+            android:hint="Height (centimeters)"/>
 
         <EditText
             android:layout_width="200dp"
