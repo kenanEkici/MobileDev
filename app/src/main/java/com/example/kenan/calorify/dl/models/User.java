@@ -1,19 +1,9 @@
 package com.example.kenan.calorify.dl.models;
 
-import android.support.v7.util.SortedList;
-
 import com.example.kenan.calorify.dl.enums.Gender;
 import com.orm.SugarRecord;
 
 import org.joda.time.LocalDateTime;
-
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.Map;
-import java.util.NavigableMap;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.UUID;
 
 /**
  * Created by Kenan on 7/10/2017.
@@ -30,6 +20,7 @@ public class User extends SugarRecord<User> {
     private double bmi;
 
     private final LocalDateTime registerDate;
+    private double idealWeight;
     //private Map<UUID, Product> productSortedMap = new TreeMap<UUID, Product>();
     //private ArrayList<Scan> scanHistory = new ArrayList<Scan>();
     //private ArrayList<Consumption> consumptionHistory = new ArrayList<Consumption>();
@@ -46,8 +37,34 @@ public class User extends SugarRecord<User> {
         setWeight(weight);
         setHeight(height);
         setAge(age);
-        setBmi(weight,height);
+        updateProfile(weight, height);
         registerDate = new LocalDateTime();
+    }
+
+    private void updateProfile(double weight, double height) {
+        setBmi(weight, height);
+        setIdealWeight(gender, height);
+    }
+
+    private void setIdealWeight(Gender gender, double height) {
+        double w = 0, h;
+        if(height < 152)
+        {
+            idealWeight = 0;
+            return;
+        }
+        if(gender == Gender.Male){
+            w = 50;
+            h = height - 152f;
+            w += 2.3 * (int) (h / 2.54f);
+        }
+        if(gender == Gender.Female){
+
+        w = 45.5;
+        h = height - 152f;
+        w += 2.3 * (int) (h / 2.54f);
+        }
+        this.idealWeight = w;
     }
 
     public double getWeight() {
@@ -78,8 +95,8 @@ public class User extends SugarRecord<User> {
         return bmi;
     }
 
-    public void setBmi(double height, double weight) {
-        this.bmi = weight / Math.pow(height,2);
+    public void setBmi(double weight, double height) {
+        this.bmi = weight / Math.pow(height/100f, 2);
     }
 
     public Gender getGender() {
@@ -130,5 +147,9 @@ public class User extends SugarRecord<User> {
 
     public LocalDateTime getRegisterDate() {
         return registerDate;
+    }
+
+    public double getIdealWeight() {
+        return idealWeight;
     }
 }
