@@ -12,4 +12,5 @@
     <string name="hint_consume">Consumed amount</string>
     <string name="consumed_unit">Eenheid</string>
     <string name="add_product_button">Add product to scheme</string>
+    <string name="empty_products">You have not consumed anything yet!</string>
 </resources>

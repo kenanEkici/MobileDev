@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.example.kenan.calorify.R;
+import com.example.kenan.calorify.dal.repos.DayRepository;
 import com.example.kenan.calorify.dal.repos.ProductRepository;
 import com.example.kenan.calorify.dal.services.FoodService;
 import com.example.kenan.calorify.dl.models.Product;
@@ -41,10 +42,10 @@ public class ScanFragment extends Fragment {
         Button scanButton = (Button) view.findViewById(R.id.scan_button);
         ListView productHistory = (ListView) view.findViewById(R.id.list_scanned_products);
 
-        ProductRepository repo = new ProductRepository();
+        ProductRepository productRepo = new ProductRepository();
         foodService = new FoodService();
 
-        productHistory.setAdapter(new ArrayAdapter<>(getContext(),R.layout.list_products_item, repo.getAllProducts()));
+        productHistory.setAdapter(new ArrayAdapter<>(getContext(),R.layout.list_products_item, productRepo.getAllProducts()));
 
         //set listener
         scanButton.setOnClickListener(v ->{

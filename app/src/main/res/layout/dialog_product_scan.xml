@@ -4,53 +4,49 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <EditText
+    <TextView
         android:id="@+id/product_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
-        android:enabled="false"/>
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:gravity="center"/>
 
-    <EditText
+    <TextView
         android:id="@+id/product_calories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
         android:layout_marginBottom="16dp"
-        android:fontFamily="sans-serif"
-        android:enabled="false"/>
+        android:gravity="center"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif"/>
 
-    <EditText
+    <TextView
         android:id="@+id/product_serving_qty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
+        android:gravity="center"
         android:layout_marginBottom="16dp"
-        android:fontFamily="sans-serif"
-        android:enabled="false"/>
+        android:textSize="20sp"
+        android:fontFamily="sans-serif"/>
 
-    <EditText
-        android:id="@+id/consumed_amount"
-        android:hint="@string/hint_consume"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp" />
-
-    <Spinner
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/consumed_unit"
-        android:layout_marginTop="20dp" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp">
+        <EditText
+            android:id="@+id/consumed_amount"
+            android:hint="@string/hint_consume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/consumed_unit" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/button_add_scheme"

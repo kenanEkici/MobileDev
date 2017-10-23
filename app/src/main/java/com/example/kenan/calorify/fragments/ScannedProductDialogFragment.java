@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import com.example.kenan.calorify.R;
 import com.example.kenan.calorify.dal.repos.ProductRepository;
 import com.example.kenan.calorify.dl.enums.Unit;
@@ -41,9 +43,9 @@ public class ScannedProductDialogFragment extends DialogFragment {
         args.putLong("productId", product.getId());
 
         //get dialog elements
-        EditText productName = (EditText) view.findViewById(R.id.product_name);
-        EditText calories = (EditText) view.findViewById(R.id.product_calories);
-        EditText qty = (EditText) view.findViewById(R.id.product_serving_qty);
+        TextView productName = (TextView) view.findViewById(R.id.product_name);
+        TextView calories = (TextView) view.findViewById(R.id.product_calories);
+        TextView qty = (TextView) view.findViewById(R.id.product_serving_qty);
         Spinner unitSpinner = (Spinner) view.findViewById(R.id.consumed_unit);
         EditText amount = (EditText) view.findViewById(R.id.consumed_amount);
         Button addToSchemeButton = (Button) view.findViewById(R.id.button_add_scheme);
@@ -62,6 +64,8 @@ public class ScannedProductDialogFragment extends DialogFragment {
             //update product
             product.setConsumedQuantity(Double.parseDouble(amount.getText().toString()));
             product.setConsumedUnit(unitSpinner.getSelectedItem().toString());
+            repo.addProduct(product);
+
             //summon datepicker
             DatePickerFragment newFragment = new DatePickerFragment();
             newFragment.setArguments(args);
