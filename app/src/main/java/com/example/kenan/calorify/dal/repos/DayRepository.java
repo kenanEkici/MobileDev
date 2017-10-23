@@ -43,20 +43,19 @@ public class DayRepository {
         return sortedKenanDates;
     }
 
-    public List<Day> getAllDaysInversed(){
+    public List<String> getAllDaysAsStrings(){
         List<LocalDate> sortedLocalDates = new ArrayList<LocalDate>();
-        List<Day> sortedKenanDates = new ArrayList<Day>();
+        List<String> sortedStringDates = new ArrayList<String>();
 
         //Return SortedList
         for (Day d : Day.listAll(Day.class)) {
             sortedLocalDates.add(LocalDate.parse(d.getDate()));
         }
-        Collections.sort(sortedLocalDates, Collections.reverseOrder());
+        Collections.sort(sortedLocalDates);
 
         for(LocalDate local : sortedLocalDates){
-            sortedKenanDates.add(new Day(local.toString()));
+            sortedStringDates.add(local.toString());
         }
-        return sortedKenanDates;
+        return sortedStringDates;
     }
-
 }

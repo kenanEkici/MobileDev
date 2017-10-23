@@ -9,6 +9,7 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
 import com.example.kenan.calorify.R;
+import com.example.kenan.calorify.dal.repos.DayRepository;
 import com.example.kenan.calorify.dal.repos.SchemeRepository;
 import com.example.kenan.calorify.dl.models.Product;
 import com.example.kenan.calorify.fragments.adapters.CustomExpandableListAdapter;
@@ -48,12 +49,13 @@ public class SchemeFragment extends Fragment {
 
 
     private void updateScheme() {
+        DayRepository dayRepo = new DayRepository();
         SchemeRepository schemeRepo = new SchemeRepository();
         scheme = schemeRepo.getSchemeOfActiveUser();
 
         schemeData = schemeRepo.getSchemeDataOfActiveUser();
         expandableListView = (ExpandableListView) view.findViewById(R.id.expandableListView);
-        expandableListTitle = new ArrayList<>(scheme.keySet());
+        expandableListTitle = new ArrayList<>(dayRepo.getAllDaysAsStrings());
         expandableListAdapter = new CustomExpandableListAdapter(getContext(), expandableListTitle, scheme);
         expandableListView.setAdapter(expandableListAdapter);
 

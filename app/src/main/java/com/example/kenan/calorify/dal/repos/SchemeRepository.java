@@ -22,7 +22,7 @@ public class SchemeRepository {
 
     public HashMap<String, List<String>> getSchemeOfActiveUser() {
         HashMap<String, List<String>> scheme = new HashMap<>();
-        List<Day> days = dayRepo.getAllDaysInversed();
+        List<Day> days = dayRepo.getAllDays();
         List<Product> products = productRepo.getAllProducts();
 
         for (Day d : days) {
