@@ -20,14 +20,14 @@ public class SchemeRepository {
         productRepo = new ProductRepository();
     }
 
-    public HashMap<String,List<String>> getSchemeOfActiveUser() {
+    public HashMap<String, List<String>> getSchemeOfActiveUser() {
         HashMap<String, List<String>> scheme = new HashMap<>();
-        List<Day> days = dayRepo.getAllDays();
+        List<Day> days = dayRepo.getAllDaysInversed();
         List<Product> products = productRepo.getAllProducts();
 
-        for(Day d : days) {
+        for (Day d : days) {
             List<String> productsPerDay = new ArrayList<>();
-            for(Product prod : products) {
+            for (Product prod : products) {
                 if (prod.getConsumedAt() != null) {
                     if (prod.getConsumedAt().getDate().equals(d.getDate())) {
                         productsPerDay.add(prod.getBrandName());
@@ -38,7 +38,29 @@ public class SchemeRepository {
         }
 
         //scheme sorteren van nieuw naar oud?? (thanks)
-        return scheme;
+        //hangt af van uw dag klasse
+
+        return  new HashMap<String, List<String>>(scheme);
     }
+
+    public List<List<Product>> getSchemeDataOfActiveUser() {
+        List<List<Product>> dataScheme = new ArrayList<List<Product>>();
+        List<Day> days = dayRepo.getAllDays();
+        List<Product> products = productRepo.getAllProducts();
+
+        for (Day d : days) {
+            List<Product> productsPerDay = new ArrayList<>();
+            for (Product prod : products) {
+                if (prod.getConsumedAt() != null) {
+                    if (prod.getConsumedAt().getDate().equals(d.getDate())) {
+                        productsPerDay.add(prod);
+                    }
+                }
+            }
+            dataScheme.add(productsPerDay);
+        }
+        return dataScheme;
+    }
+
 
 }

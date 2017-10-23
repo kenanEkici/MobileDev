@@ -3,6 +3,10 @@ package com.example.kenan.calorify.dal.repos;
 import com.example.kenan.calorify.dl.models.Day;
 import com.example.kenan.calorify.dl.models.Product;
 
+import org.joda.time.LocalDate;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -25,7 +29,34 @@ public class DayRepository {
     }
 
     public List<Day> getAllDays() {
-        return Day.listAll(Day.class);
+        List<LocalDate> sortedLocalDates = new ArrayList<LocalDate>();
+        List<Day> sortedKenanDates = new ArrayList<Day>();
+
+        //Return SortedList
+        for (Day d : Day.listAll(Day.class)) {
+            sortedLocalDates.add(LocalDate.parse(d.getDate()));
+        }
+        Collections.sort(sortedLocalDates);
+        for(LocalDate local : sortedLocalDates){
+            sortedKenanDates.add(new Day(local.toString()));
+        }
+        return sortedKenanDates;
+    }
+
+    public List<Day> getAllDaysInversed(){
+        List<LocalDate> sortedLocalDates = new ArrayList<LocalDate>();
+        List<Day> sortedKenanDates = new ArrayList<Day>();
+
+        //Return SortedList
+        for (Day d : Day.listAll(Day.class)) {
+            sortedLocalDates.add(LocalDate.parse(d.getDate()));
+        }
+        Collections.sort(sortedLocalDates, Collections.reverseOrder());
+
+        for(LocalDate local : sortedLocalDates){
+            sortedKenanDates.add(new Day(local.toString()));
+        }
+        return sortedKenanDates;
     }
 
 }
