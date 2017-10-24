@@ -63,6 +63,29 @@ Deze one-tier applicatie maakt gebruik van de Nutritionix API om hier alle infor
 
 
 
+### TO-DO (24/10/2017)
+
+Profile fragment
+- Avatar
+- Chart (weight)
+
+Settings
+- Update profile button (weight, height, name, ??)
+ 
+Scan fragment
+- Modal bij elk fragment in de scan historiek
+- In elk modal kunnen toevoegen aan het scheme.
+
+Scheme fragment
+- listviewTextChild veranderen --> Brand name + calorieën
+- listviewTextParent veranderen -> Dag + calorieën / dag
+- Chart (calories / day)
+
+Algemeen
+- Testing environment (is Wifi enabled etc)
+- Validation
+- Refactoring
+
 ##### Extra references:
 Outpan API - Gtin voor de basis informatie van het product --> access to Nutritionix API
 
