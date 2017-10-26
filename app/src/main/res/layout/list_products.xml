@@ -6,6 +6,8 @@
         android:id="@+id/listTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-condensed"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
         android:textColor="@android:color/black"
         android:paddingTop="10dp"

@@ -1,6 +1,8 @@
 package com.example.kenan.calorify.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,7 +13,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.example.kenan.calorify.R;
-import com.example.kenan.calorify.dal.repos.DayRepository;
 import com.example.kenan.calorify.dal.repos.ProductRepository;
 import com.example.kenan.calorify.dal.services.FoodService;
 import com.example.kenan.calorify.dl.models.Product;
@@ -50,9 +51,22 @@ public class ScanFragment extends Fragment {
         //set listener
         scanButton.setOnClickListener(v ->{
             //open a barcode scanner if available
-            Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-            intent.putExtra("com.google.zxing.client.android.SCAN.SCAN_MODE", "QR_CODE_MODE");
-            startActivityForResult(intent, 0);
+            try {
+                Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+                intent.putExtra("com.google.zxing.client.android.SCAN.SCAN_MODE", "QR_CODE_MODE");
+                startActivityForResult(intent, 0);
+            } catch (Exception ex) {
+                Toast.makeText(getContext(), getString(R.string.scanner),Toast.LENGTH_LONG).show();
+            }
+        });
+
+        productHistory.setOnItemClickListener((parent, view1, position, id) -> {
+            Bundle args = new Bundle();
+            SchemeDialogFragment dialog = new SchemeDialogFragment();
+            args.putString("openedBy", "scan");
+            args.putLong("productId", productRepo.getAllProducts().get(position).getId());
+            dialog.setArguments(args);
+            dialog.show(getFragmentManager(), "SchemeDialogFragment");
         });
 
         return view;
@@ -66,33 +80,45 @@ public class ScanFragment extends Fragment {
 
                 //start task to get product from api
                 FoodService.FoodInfoFromCodeTask foodInfoFromCodeTask = foodService.new FoodInfoFromCodeTask();
-                try {
-                    Gson gson = new Gson();
-                    ProductDTO response = gson.fromJson(foodInfoFromCodeTask.execute(contents).get(), ProductDTO.class);
-                    ProductRepository repo = new ProductRepository();
+                //check for internet access
+                if (!isNetworkConnected()) {
+                    Toast.makeText(getContext(), getString(R.string.internet), Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        Gson gson = new Gson();
+                        ProductDTO response = gson.fromJson(foodInfoFromCodeTask.execute(contents).get(), ProductDTO.class);
+                        ProductRepository repo = new ProductRepository();
 
-                    if (response.getProducts() != null) {
-                        Product scannedProduct = response.getProducts()[0];
-                        scannedProduct.setScannedAt(LocalDate.now().toString());
-                        repo.addProduct(scannedProduct);
-                        Bundle args = new Bundle();
-                        ScannedProductDialogFragment dialog = new ScannedProductDialogFragment();
-                        args.putLong("productId", scannedProduct.getId());
-                        dialog.setArguments(args);
-                        dialog.show(getFragmentManager(), "ScannedProductDialogFragment");
-                    } else {
-                        Toast.makeText(getContext(), "Product not found!", Toast.LENGTH_LONG).show();
+                        if (response.getProducts() != null) {
+                            Product scannedProduct = response.getProducts()[0];
+                            scannedProduct.setScannedAt(LocalDate.now().toString());
+                            repo.addProduct(scannedProduct);
+
+                            Bundle args = new Bundle();
+                            ScannedProductDialogFragment dialog = new ScannedProductDialogFragment();
+                            args.putLong("productId", scannedProduct.getId());
+                            dialog.setArguments(args);
+                            dialog.show(getFragmentManager(), "ScannedProductDialogFragment");
+                        } else {
+                            Toast.makeText(getContext(), "Product not found!", Toast.LENGTH_LONG).show();
+                        }
+
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
                     }
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
                 }
             } else {
                 // Handle cancel
             }
+
         }
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
     }
 
 }

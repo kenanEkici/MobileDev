@@ -8,6 +8,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.kenan.calorify.R;
@@ -29,6 +30,7 @@ public class SchemeDialogFragment extends DialogFragment {
         Bundle args = new Bundle();
         args.putLong("productId", p.getId());
 
+
         //Get the textViews from the view with the ID
         TextView brandNameText = (TextView) view.findViewById(R.id.fsd_Brand_Name);
         TextView foodNameText = (TextView) view.findViewById(R.id.fsd_Food_Name);
@@ -40,7 +42,8 @@ public class SchemeDialogFragment extends DialogFragment {
         TextView totalCarbohydratesText = (TextView) view.findViewById(R.id.fsd_Total_Carbohydates);
         TextView sugarsText = (TextView) view.findViewById(R.id.fsd_Sugars);
         TextView totalFatText = (TextView) view.findViewById(R.id.fsd_Total_Fat);
-
+        Button deleteProduct = (Button) view.findViewById(R.id.button_delete_prod);
+        Button addToScheme = (Button) view.findViewById(R.id.button_add_prod_to_scheme);
 
 
         //Put the info in the textviews
@@ -55,6 +58,22 @@ public class SchemeDialogFragment extends DialogFragment {
         sugarsText.setText(Double.toString(p.getSugars()));
         totalFatText.setText(Double.toString(p.getTotalFat()));
 
+        if (getArguments().getString("openedBy").equals("scan")) {
+            deleteProduct.setVisibility(View.GONE);
+        } else {
+            addToScheme.setVisibility(View.GONE);
+        }
+
+        deleteProduct.setOnClickListener(v -> {
+            //delete a product from a specific day
+        });
+
+        addToScheme.setOnClickListener(v -> {
+            ScannedProductDialogFragment dialog = new ScannedProductDialogFragment();
+            args.putLong("productId", p.getId());
+            dialog.setArguments(args);
+            dialog.show(getFragmentManager(), "ScannedProductDialogFragment");
+        });
 
         builder.setView(view);
         return builder.create();

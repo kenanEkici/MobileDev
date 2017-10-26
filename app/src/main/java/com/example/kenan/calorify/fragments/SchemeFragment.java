@@ -78,6 +78,7 @@ public class SchemeFragment extends Fragment {
                 Bundle args = new Bundle();
                 SchemeDialogFragment dialog = new SchemeDialogFragment();
                 args.putLong("productId", schemeData.get(groupPosition).get(childPosition).getId());
+                args.putString("openedBy", "scheme");
                 dialog.setArguments(args);
                 dialog.show(getFragmentManager(), "SchemeDialogFragment");
 

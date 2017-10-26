@@ -10,7 +10,10 @@
     <string name="history">History scanned products</string>
     <string name="scan_product">Scan new product</string>
     <string name="hint_consume">Consumed amount</string>
-    <string name="consumed_unit">Eenheid</string>
     <string name="add_product_button">Add product to scheme</string>
     <string name="empty_products">You have not consumed anything yet!</string>
+    <string name="delete_product">Delete product</string>
+    <string name="internet">No internet connection!</string>
+    <string name="scanner">No scanner available, please install one!</string>
+    <string name="add_product">Add product</string>
 </resources>

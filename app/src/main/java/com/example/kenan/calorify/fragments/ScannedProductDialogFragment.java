@@ -17,7 +17,6 @@ import com.example.kenan.calorify.R;
 import com.example.kenan.calorify.dal.repos.ProductRepository;
 import com.example.kenan.calorify.dl.enums.Unit;
 import com.example.kenan.calorify.dl.models.Product;
-import com.example.kenan.calorify.fragments.adapters.DatePickerFragment;
 
 /**
  * Created by Kenan on 17/10/2017.
@@ -46,24 +45,18 @@ public class ScannedProductDialogFragment extends DialogFragment {
         TextView productName = (TextView) view.findViewById(R.id.product_name);
         TextView calories = (TextView) view.findViewById(R.id.product_calories);
         TextView qty = (TextView) view.findViewById(R.id.product_serving_qty);
-        Spinner unitSpinner = (Spinner) view.findViewById(R.id.consumed_unit);
         EditText amount = (EditText) view.findViewById(R.id.consumed_amount);
         Button addToSchemeButton = (Button) view.findViewById(R.id.button_add_scheme);
-        Unit[] units = { Unit.Grams, Unit.Liters };
 
         //fill in dialog
         productName.setText(product.getBrandName());
         calories.setText(String.valueOf(product.getCalories()));
         qty.setText(String.valueOf(product.getServingQuantity()));
-        ArrayAdapter<Unit> adapter = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_spinner_item, units);
-        unitSpinner.setAdapter(adapter);
 
         //set listener
         addToSchemeButton.setOnClickListener(v -> {
             //update product
             product.setConsumedQuantity(Double.parseDouble(amount.getText().toString()));
-            product.setConsumedUnit(unitSpinner.getSelectedItem().toString());
             repo.addProduct(product);
 
             //summon datepicker

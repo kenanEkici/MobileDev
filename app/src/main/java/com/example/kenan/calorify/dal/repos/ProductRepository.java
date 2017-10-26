@@ -1,5 +1,6 @@
 package com.example.kenan.calorify.dal.repos;
 
+import com.example.kenan.calorify.dl.models.Day;
 import com.example.kenan.calorify.dl.models.Product;
 import com.example.kenan.calorify.dl.models.User;
 
@@ -22,4 +23,21 @@ public class ProductRepository {
     public List<Product> getAllProducts() {
         return Product.listAll(Product.class);
     }
+
+    public void deleteProduct(Long id) {
+        getProductByid(id).delete();
+    }
+
+    public void deleteAllProducts() {
+        Product.deleteAll(Product.class);
+    }
+
+    public void deleteProductFromScheme(Long dayId, Long productId) {
+        Day.listAll(Day.class).stream().filter(day -> day.getId() == dayId).forEach(day -> {
+            Product.listAll(Product.class).stream().filter(prod -> prod.getId() == productId).forEach(prod -> {
+                getProductByid(productId).setConsumedAt(null);
+            });
+        });
+    }
+
 }

@@ -1,17 +1,16 @@
-package com.example.kenan.calorify.fragments.adapters;
+package com.example.kenan.calorify.fragments;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.widget.DatePicker;
-
-import com.example.kenan.calorify.MenuActivity;
 import com.example.kenan.calorify.dal.repos.DayRepository;
 import com.example.kenan.calorify.dal.repos.ProductRepository;
 import com.example.kenan.calorify.dl.models.Day;
 import com.example.kenan.calorify.dl.models.Product;
+import com.example.kenan.calorify.helpers.AuthenticationHelper;
 
 import org.joda.time.LocalDate;
 
@@ -26,6 +25,7 @@ public class DatePickerFragment extends DialogFragment
 
     private Product product;
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -46,9 +46,8 @@ public class DatePickerFragment extends DialogFragment
         DayRepository dayRepo = new DayRepository();
         Product updatedProduct = dayRepo.saveOrUpdateDayOfConsumedProduct(day,product);
         repo.addProduct(updatedProduct);
-        getDialog().dismiss();
 
-        Intent intent = new Intent(getContext(), MenuActivity.class);
-        startActivity(intent);
+        getDialog().dismiss();
+        AuthenticationHelper.continueToMenu(getContext());
     }
 }
