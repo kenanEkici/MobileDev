@@ -7,9 +7,9 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.widget.DatePicker;
 import com.example.kenan.calorify.dal.repos.DayRepository;
-import com.example.kenan.calorify.dal.repos.ProductRepository;
+import com.example.kenan.calorify.dal.repos.ConsumedProductRepository;
+import com.example.kenan.calorify.dl.models.ConsumedProduct;
 import com.example.kenan.calorify.dl.models.Day;
-import com.example.kenan.calorify.dl.models.Product;
 import com.example.kenan.calorify.helpers.AuthenticationHelper;
 
 import org.joda.time.LocalDate;
@@ -23,7 +23,7 @@ import java.util.Calendar;
 public class DatePickerFragment extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
 
-    private Product product;
+    private ConsumedProduct product;
 
     @NonNull
     @Override
@@ -34,17 +34,16 @@ public class DatePickerFragment extends DialogFragment
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
 
-        ProductRepository repo = new ProductRepository();
-        product = repo.getProductByid(getArguments().getLong("productId"));
+        product = (ConsumedProduct) getArguments().getSerializable("consumedProduct");
         return new DatePickerDialog(getActivity(), this, year, month, day);
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        ProductRepository repo = new ProductRepository();
+        ConsumedProductRepository repo = new ConsumedProductRepository();
         Day day = new Day(new LocalDate(year, month, dayOfMonth).toString());
         DayRepository dayRepo = new DayRepository();
-        Product updatedProduct = dayRepo.saveOrUpdateDayOfConsumedProduct(day,product);
+        ConsumedProduct updatedProduct = dayRepo.saveOrUpdateDayOfConsumedProduct(day,product);
         repo.addProduct(updatedProduct);
 
         getDialog().dismiss();

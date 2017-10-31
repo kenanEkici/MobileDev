@@ -9,13 +9,13 @@ import com.google.gson.annotations.SerializedName;
 public class ProductDTO
 {
     @SerializedName("foods")
-    private Product[] products;
+    private ScannedProduct[] products;
 
-    public Product[] getProducts() {
+    public ScannedProduct[] getProducts() {
         return products;
     }
 
-    public void setProducts(Product[] products) {
+    public void setProducts(ScannedProduct[] products) {
         this.products = products;
     }
 }

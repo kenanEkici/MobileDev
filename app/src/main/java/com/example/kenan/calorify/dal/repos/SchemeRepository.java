@@ -1,7 +1,7 @@
 package com.example.kenan.calorify.dal.repos;
 
 import com.example.kenan.calorify.dl.models.Day;
-import com.example.kenan.calorify.dl.models.Product;
+import com.example.kenan.calorify.dl.models.ConsumedProduct;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,28 +13,28 @@ import java.util.List;
 
 public class SchemeRepository {
     private DayRepository dayRepo;
-    private ProductRepository productRepo;
+    private ConsumedProductRepository productRepo;
 
     public SchemeRepository() {
         dayRepo = new DayRepository();
-        productRepo = new ProductRepository();
+        productRepo = new ConsumedProductRepository();
     }
 
     public HashMap<String, List<String>> getSchemeOfActiveUser() {
         HashMap<String, List<String>> scheme = new HashMap<>();
         List<Day> days = dayRepo.getAllDays();
-        List<Product> products = productRepo.getAllProducts();
+        List<ConsumedProduct> products = productRepo.getAllProducts();
 
         for (Day d : Day.listAll(Day.class)) {
             List<String> productsPerDay = new ArrayList<>();
-            for (Product prod : products) {
+            for (ConsumedProduct prod : products) {
                 if (prod.getConsumedAt() != null) {
                     if (prod.getConsumedAt().getDate().equals(d.getDate())) {
                         productsPerDay.add(prod.getBrandName() + " : " + prod.getCalculatedCalories() + " kcal");
                     }
                 }
             }
-            scheme.put(d.getDate() + "\t\t\t"  + String.valueOf(d.getTotalCalories()) + " kcal", productsPerDay);
+            scheme.put(d.getDate() + "\t\t\t"  + String.valueOf((int)d.getTotalCalories()) + " kcal", productsPerDay);
         }
 
         //scheme sorteren van nieuw naar oud?? (thanks)
@@ -43,14 +43,14 @@ public class SchemeRepository {
         return  new HashMap<String, List<String>>(scheme);
     }
 
-    public List<List<Product>> getSchemeDataOfActiveUser() {
-        List<List<Product>> dataScheme = new ArrayList<List<Product>>();
+    public List<List<ConsumedProduct>> getSchemeDataOfActiveUser() {
+        List<List<ConsumedProduct>> dataScheme = new ArrayList<List<ConsumedProduct>>();
         List<Day> days = dayRepo.getAllDays();
-        List<Product> products = productRepo.getAllProducts();
+        List<ConsumedProduct> products = productRepo.getAllProducts();
 
         for (Day d : days) {
-            List<Product> productsPerDay = new ArrayList<>();
-            for (Product prod : products) {
+            List<ConsumedProduct> productsPerDay = new ArrayList<>();
+            for (ConsumedProduct prod : products) {
                 if (prod.getConsumedAt() != null) {
                     if (prod.getConsumedAt().getDate().equals(d.getDate())) {
                         productsPerDay.add(prod);

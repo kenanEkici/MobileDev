@@ -1,25 +1,17 @@
 package com.example.kenan.calorify.dl.models;
 
-import com.facebook.stetho.json.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
 
-import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
-
-import java.util.List;
+import java.io.Serializable;
 
 /**
- * Created by Kenan on 10/10/2017.
+ * Created by Kenan on 31/10/2017.
  */
 
-public class Product extends SugarRecord<Product>{
+public class ScannedProduct extends SugarRecord<ScannedProduct> implements Serializable {
 
-    private Day consumedAt;
-    private double consumedQuantity;
-    private String consumedUnit;
     private String scannedAt;
-    private double calculatedCalories;
 
     @SerializedName("food_name")
     private String foodName;
@@ -62,31 +54,6 @@ public class Product extends SugarRecord<Product>{
 
     @SerializedName("nf_potassium")
     private double potassium;
-
-    public Day getConsumedAt() {
-        return consumedAt;
-    }
-
-    public void setConsumedAt(Day consumedAt) {
-        this.consumedAt = consumedAt;
-    }
-
-    public double getConsumedQuantity() {
-        return consumedQuantity;
-    }
-
-    public void setConsumedQuantity(double consumedQuantity) {
-        this.consumedQuantity = consumedQuantity;
-        setCalculatedCalories((consumedQuantity / getServingQuantity()) * getCalories());
-    }
-
-    public String getConsumedUnit() {
-        return consumedUnit;
-    }
-
-    public void setConsumedUnit(String consumedUnit) {
-        this.consumedUnit = consumedUnit;
-    }
 
     public String getScannedAt() {
         return scannedAt;
@@ -206,14 +173,6 @@ public class Product extends SugarRecord<Product>{
 
     public void setPotassium(double potassium) {
         this.potassium = potassium;
-    }
-
-    public double getCalculatedCalories() {
-        return calculatedCalories;
-    }
-
-    public void setCalculatedCalories(double calculatedCalories) {
-        this.calculatedCalories = calculatedCalories;
     }
 
     @Override

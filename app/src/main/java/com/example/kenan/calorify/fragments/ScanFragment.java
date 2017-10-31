@@ -13,10 +13,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.example.kenan.calorify.R;
-import com.example.kenan.calorify.dal.repos.ProductRepository;
+import com.example.kenan.calorify.dal.repos.ScannedProductRepository;
 import com.example.kenan.calorify.dal.services.FoodService;
-import com.example.kenan.calorify.dl.models.Product;
 import com.example.kenan.calorify.dl.models.ProductDTO;
+import com.example.kenan.calorify.dl.models.ScannedProduct;
 import com.google.gson.Gson;
 import org.joda.time.LocalDate;
 import java.util.concurrent.ExecutionException;
@@ -43,7 +43,7 @@ public class ScanFragment extends Fragment {
         Button scanButton = (Button) view.findViewById(R.id.scan_button);
         ListView productHistory = (ListView) view.findViewById(R.id.list_scanned_products);
 
-        ProductRepository productRepo = new ProductRepository();
+        ScannedProductRepository productRepo = new ScannedProductRepository();
         foodService = new FoodService();
 
         productHistory.setAdapter(new ArrayAdapter<>(getContext(),R.layout.list_products_item, productRepo.getAllProducts()));
@@ -62,11 +62,11 @@ public class ScanFragment extends Fragment {
 
         productHistory.setOnItemClickListener((parent, view1, position, id) -> {
             Bundle args = new Bundle();
-            SchemeDialogFragment dialog = new SchemeDialogFragment();
+            ProductDialogFragment dialog = new ProductDialogFragment();
             args.putString("openedBy", "scan");
             args.putLong("productId", productRepo.getAllProducts().get(position).getId());
             dialog.setArguments(args);
-            dialog.show(getFragmentManager(), "SchemeDialogFragment");
+            dialog.show(getFragmentManager(), "ProductDialogFragment");
         });
 
         return view;
@@ -85,12 +85,14 @@ public class ScanFragment extends Fragment {
                     Toast.makeText(getContext(), getString(R.string.internet), Toast.LENGTH_SHORT).show();
                 } else {
                     try {
+                        //parse response
                         Gson gson = new Gson();
                         ProductDTO response = gson.fromJson(foodInfoFromCodeTask.execute(contents).get(), ProductDTO.class);
-                        ProductRepository repo = new ProductRepository();
+                        ScannedProductRepository repo = new ScannedProductRepository();
 
                         if (response.getProducts() != null) {
-                            Product scannedProduct = response.getProducts()[0];
+                            //retrieve results
+                            ScannedProduct scannedProduct = response.getProducts()[0];
                             scannedProduct.setScannedAt(LocalDate.now().toString());
                             repo.addProduct(scannedProduct);
 

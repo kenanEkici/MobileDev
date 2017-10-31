@@ -16,4 +16,6 @@
     <string name="internet">No internet connection!</string>
     <string name="scanner">No scanner available, please install one!</string>
     <string name="add_product">Add product</string>
+    <string name="settings">Settings</string>
+    <string name="clear_history">Clear scan history</string>
 </resources>

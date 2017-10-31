@@ -1,7 +1,7 @@
 package com.example.kenan.calorify.dal.repos;
 
+import com.example.kenan.calorify.dl.models.ConsumedProduct;
 import com.example.kenan.calorify.dl.models.Day;
-import com.example.kenan.calorify.dl.models.Product;
 
 import org.joda.time.LocalDate;
 
@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DayRepository {
 
-    public Product saveOrUpdateDayOfConsumedProduct(Day day, Product product) {
+    public ConsumedProduct saveOrUpdateDayOfConsumedProduct(Day day, ConsumedProduct product) {
         for (Day d : Day.listAll(Day.class)) {
             if (d.getDate().equals(day.getDate())) {
                 product.setConsumedAt(d);
@@ -28,6 +28,10 @@ public class DayRepository {
         day.save();
         product.setConsumedAt(day);
         return product;
+    }
+
+    public void deleteEverything(){
+        Day.deleteAll(Day.class);
     }
 
     public List<Day> getAllDays() {
@@ -56,8 +60,6 @@ public class DayRepository {
         return null;
     }
 
-
-
     public List<String> getAllDaysAsStrings(){
         List<LocalDate> sortedLocalDates = new ArrayList<LocalDate>();
         List<String> sortedStringDates = new ArrayList<String>();
@@ -70,7 +72,7 @@ public class DayRepository {
 
         for(LocalDate local : sortedLocalDates){
             Day d = getDayForDate(local);
-            sortedStringDates.add(local.toString() + "\t\t\t" + String.valueOf(d.getTotalCalories()) + " kcal" );
+            sortedStringDates.add(local.toString() + "\t\t\t" + String.valueOf((int) d.getTotalCalories()) + " kcal" );
         }
         return sortedStringDates;
     }

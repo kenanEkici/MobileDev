@@ -13,10 +13,9 @@ import android.widget.TextView;
 import com.example.kenan.calorify.R;
 import com.example.kenan.calorify.dal.repos.DayRepository;
 import com.example.kenan.calorify.dal.repos.SchemeRepository;
-import com.example.kenan.calorify.dl.models.Product;
+import com.example.kenan.calorify.dl.models.ConsumedProduct;
 import com.example.kenan.calorify.fragments.adapters.CustomExpandableListAdapter;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class SchemeFragment extends Fragment {
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
     HashMap<String, List<String>> scheme;
-    List<List<Product>> schemeData;
+    List<List<ConsumedProduct>> schemeData;
     ImageView empty_list_icon;
     TextView empty_list_notif;
 
@@ -76,11 +75,11 @@ public class SchemeFragment extends Fragment {
                 //details te zien van een geconsumeerde product
 
                 Bundle args = new Bundle();
-                SchemeDialogFragment dialog = new SchemeDialogFragment();
+                ProductDialogFragment dialog = new ProductDialogFragment();
                 args.putLong("productId", schemeData.get(groupPosition).get(childPosition).getId());
                 args.putString("openedBy", "scheme");
                 dialog.setArguments(args);
-                dialog.show(getFragmentManager(), "SchemeDialogFragment");
+                dialog.show(getFragmentManager(), "ProductDialogFragment");
 
                 return true;
             });
