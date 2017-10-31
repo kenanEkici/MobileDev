@@ -67,7 +67,7 @@ public class SchemeFragment extends Fragment {
 
             schemeData = schemeRepo.getSchemeDataOfActiveUser();
             expandableListView = (ExpandableListView) view.findViewById(R.id.expandableListView);
-            expandableListTitle = new ArrayList<>(dayRepo.getAllDaysAsStrings());
+            expandableListTitle = dayRepo.getAllDaysAsStrings();
             expandableListAdapter = new CustomExpandableListAdapter(getContext(), expandableListTitle, scheme);
             expandableListView.setAdapter(expandableListAdapter);
 

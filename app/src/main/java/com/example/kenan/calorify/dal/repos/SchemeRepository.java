@@ -25,16 +25,16 @@ public class SchemeRepository {
         List<Day> days = dayRepo.getAllDays();
         List<Product> products = productRepo.getAllProducts();
 
-        for (Day d : days) {
+        for (Day d : Day.listAll(Day.class)) {
             List<String> productsPerDay = new ArrayList<>();
             for (Product prod : products) {
                 if (prod.getConsumedAt() != null) {
                     if (prod.getConsumedAt().getDate().equals(d.getDate())) {
-                        productsPerDay.add(prod.getBrandName());
+                        productsPerDay.add(prod.getBrandName() + " : " + prod.getCalculatedCalories() + " kcal");
                     }
                 }
             }
-            scheme.put(d.getDate(), productsPerDay);
+            scheme.put(d.getDate() + "\t\t\t"  + String.valueOf(d.getTotalCalories()) + " kcal", productsPerDay);
         }
 
         //scheme sorteren van nieuw naar oud?? (thanks)

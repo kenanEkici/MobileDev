@@ -12,6 +12,7 @@ import org.joda.time.LocalDateTime;
 public class Day extends SugarRecord<Day> {
 
     private String date;
+    private double totalCalories;
 
     public Day() {
 
@@ -23,6 +24,14 @@ public class Day extends SugarRecord<Day> {
 
     public String getDate() {
         return date;
+    }
+
+    public double getTotalCalories() {
+        return totalCalories;
+    }
+
+    public void setTotalCalories(double totalCalories) {
+        this.totalCalories = totalCalories;
     }
 
     @Override

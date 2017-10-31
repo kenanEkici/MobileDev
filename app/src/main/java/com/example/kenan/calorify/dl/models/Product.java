@@ -77,6 +77,7 @@ public class Product extends SugarRecord<Product>{
 
     public void setConsumedQuantity(double consumedQuantity) {
         this.consumedQuantity = consumedQuantity;
+        setCalculatedCalories((consumedQuantity / getServingQuantity()) * getCalories());
     }
 
     public String getConsumedUnit() {
