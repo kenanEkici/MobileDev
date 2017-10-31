@@ -98,7 +98,7 @@ public class ScanFragment extends Fragment {
 
                             Bundle args = new Bundle();
                             ScannedProductDialogFragment dialog = new ScannedProductDialogFragment();
-                            args.putLong("productId", scannedProduct.getId());
+                            args.putSerializable("scannedProduct", scannedProduct);
                             dialog.setArguments(args);
                             dialog.show(getFragmentManager(), "ScannedProductDialogFragment");
                         } else {
