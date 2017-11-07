@@ -78,7 +78,7 @@ public class ProfileFragment extends Fragment {
         LineDataSet dataSet  = new LineDataSet(entries, "");
         dataSet.setLineWidth(2f);
         dataSet.setDrawCircles(true);
-        dataSet.setValueTextSize(5f);
+        dataSet.setValueTextSize(8f);
         LineData lineData = new LineData(dataSet);
 
 
@@ -112,7 +112,10 @@ public class ProfileFragment extends Fragment {
 
         chart.getDescription().setEnabled(false);
         chart.setData(lineData);
+        chart.getLegend().setEnabled(false);
         chart.invalidate();
+
+
         // Inflate the layout for this fragment/*
         setHasOptionsMenu(true);
         return view;
