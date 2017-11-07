@@ -39,6 +39,7 @@ public class SchemeFragment extends Fragment {
     List<List<Product>> schemeData;
     ImageView empty_list_icon;
     TextView empty_list_notif;
+    DayRepository dayRepo = new DayRepository();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,7 +53,6 @@ public class SchemeFragment extends Fragment {
     }
 
     private void updateScheme() {
-        DayRepository dayRepo = new DayRepository();
 
         if (dayRepo.getAllDays().size() == 0) {
             empty_list_icon.setVisibility(View.VISIBLE);
@@ -68,10 +68,11 @@ public class SchemeFragment extends Fragment {
             schemeData = schemeRepo.getSchemeDataOfActiveUser();
             expandableListView = (ExpandableListView) view.findViewById(R.id.expandableListView);
             expandableListTitle = new ArrayList<>(dayRepo.getAllDaysAsStrings());
+            formatWithCalories();
             expandableListAdapter = new CustomExpandableListAdapter(getContext(), expandableListTitle, scheme);
             expandableListView.setAdapter(expandableListAdapter);
 
-            expandableListView.setOnChildClickListener((parent, v, groupPosition, childPosition, id) ->  {
+            expandableListView.setOnChildClickListener((parent, v, groupPosition, childPosition, id) -> {
                 //hier zou je dezelfde modal kunnen openen als je een product scant om
                 //details te zien van een geconsumeerde product
 
@@ -84,5 +85,27 @@ public class SchemeFragment extends Fragment {
                 return true;
             });
         }
+    }
+
+    private void formatWithCalories() {
+
+        List<String> dateList = dayRepo.getAllDaysAsStrings();
+        HashMap<String, List<String>> newScheme = new HashMap<>();
+        List<String> newTitleList = new ArrayList<>();
+        for (int i = 0; i < schemeData.size(); i++ ){ // Get all the days
+            double DayCalories = 0f;
+            ArrayList<Product> plist = new ArrayList<>();
+            List<String> dailyList = new ArrayList<>();
+            for (Product p : plist) { // Get all the Products
+                DayCalories += p.getTotalCalories();
+                //Set the product Calories
+                dailyList.add(String.format("%s %8.2f", p.getBrandName(), p.getTotalCalories()));
+            }
+            String newGroupText = String.format("%s %8.2f", dateList.get(i), DayCalories);
+            newScheme.put(newGroupText, dailyList);
+            newTitleList.add(newGroupText);
+        }
+        scheme = newScheme;
+        expandableListTitle = newTitleList;
     }
 }

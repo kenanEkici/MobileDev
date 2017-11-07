@@ -219,4 +219,8 @@ public class Product extends SugarRecord<Product>{
     public String toString(){
         return getBrandName();
     }
+
+    public Double getTotalCalories() {
+        return calories * servingQuantity;
+    }
 }
