@@ -6,111 +6,120 @@
     android:padding="10dp">
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        >
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:text="Name: " />
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:text="Age: " />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:text="Gender: " />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="Name: " />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:text="Height(cm): " />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="Age: " />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:text="Weight(kg): " />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="Gender: " />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:text="BMI: " />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="Height(cm): " />
 
-            <TextView
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="Weight(kg): " />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="BMI: " />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="Ideal Weight(kg):" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/profile_Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/profile_Age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/profile_Gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/profile_Height"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/profile_Weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/profile_BMI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/profile_IdealWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/profile_Chart"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:text="Ideal Weight(kg):" />
+                android:layout_height="500px" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            >
-
-            <TextView
-                android:id="@+id/profile_Name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-            <TextView
-                android:id="@+id/profile_Age"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-            <TextView
-                android:id="@+id/profile_Gender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-
-            <TextView
-                android:id="@+id/profile_Height"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-
-            <TextView
-                android:id="@+id/profile_Weight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-
-            <TextView
-                android:id="@+id/profile_BMI"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-
-            <TextView
-                android:id="@+id/profile_IdealWeight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-        </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
