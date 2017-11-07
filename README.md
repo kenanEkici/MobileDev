@@ -22,7 +22,7 @@
 
 Dankzij de kennis die we hebben opgedaan, zoals het ontwikkelen van een mobiele applicatieontwikkeling of het managen van producten in een supermarkt tijdens de vakantiejob, kwamen we op het idee om een applicatie te ontwikkelen rond het scannen van producten en managen van voedingswaarden en allergenen.
 
-Deze applicatie heeft als doel om de gebruiker alle nodige informatie te geven over de voedingswaren die in het product zitten. Deze producten kunnen gescand worden aan de hand van een barcode. De gebruiker kan via een eigen profiel aanmaken en zo aangeven welke allergieën van toepassing zijn. De dagelijkse aanbevolen hoeveelheid calorieën wordt berekend waarmee de gebruiker rekening dient te houden. Indien de gebruiker afwijkt van deze hoeveelheid of indien het product dat men heeft gescand een allergische reactie veroorzaakt, kan de applicatie de gebruiker coachen of indien nodig verwittigen.
+Deze applicatie heeft als doel om de gebruiker alle nodige informatie te geven over de voedingswaren die in het product zitten. Deze producten kunnen gescand worden aan de hand van een barcode. De gebruiker kan een eigen profiel aanmaken. De dagelijkse aanbevolen hoeveelheid calorieën wordt berekend waarmee de gebruiker rekening dient te houden. Indien de gebruiker afwijkt van deze hoeveelheid of indien het product dat men heeft gescand een allergische reactie veroorzaakt, kan de applicatie de gebruiker coachen of indien nodig verwittigen. Dit is visueel te bezichtigen door middel van een grafiek. (Notificaties?)
 
 **Technisch**
 
@@ -45,46 +45,25 @@ Deze one-tier applicatie maakt gebruik van de Nutritionix API om hier alle infor
 
 ### Doelstellingen (Extra)
 
-	Google nutrition coach API
+	Grafiek ideaal gewicht
 	Beweging? --> GPS + maps
 	Sharen op social accounts
 
 ### Authentication
 
-	Geen, maar wel een PIN-code instelbaar
-
+	Lokaal gebruiker (eventueel pin?)
+	
 ### Environment (Local API)
 
 	Nutritionix API 
 	(x-app-id = 4359abb2)
 	(x-app-key = 69316a39aa6242115b03d9aa15498b66)
 
-### DATA
-
-
 
 ### TO-DO (24/10/2017)
 
-Profile fragment
-- Avatar
-- Chart (weight)
-
-Settings
-- Update profile button (weight, height, name, ??)
- 
-Scan fragment
-- Modal bij elk fragment in de scan historiek
-- In elk modal kunnen toevoegen aan het scheme.
-
-Scheme fragment
-- listviewTextChild veranderen --> Brand name + calorieën
-- listviewTextParent veranderen -> Dag + calorieën / dag
-- Chart (calories / day)
-
-Algemeen
-- Testing environment (is Wifi enabled etc)
-- Validation
-- Refactoring
+Alle doelstellingen zijn bereikt. 
+Eventueel refactoren.
 
 ##### Extra references:
 Outpan API - Gtin voor de basis informatie van het product --> access to Nutritionix API
