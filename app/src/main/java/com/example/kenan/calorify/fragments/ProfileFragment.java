@@ -14,14 +14,13 @@ import com.example.kenan.calorify.dal.repos.UserRepository;
 import com.example.kenan.calorify.dal.repos.WeightRepository;
 import com.example.kenan.calorify.dl.models.User;
 import com.example.kenan.calorify.dl.models.Weight;
+import com.example.kenan.calorify.helpers.MyXAxisValueFormatter;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
@@ -81,18 +80,10 @@ public class ProfileFragment extends Fragment {
             labels.add(weightList.get(i).getGraphDate());
         }
 
-        IAxisValueFormatter formatter = new IAxisValueFormatter() {
-            @Override
-            public String getFormattedValue(float v, AxisBase axisBase) {
-                return "";
-            }
-        };
-
         LineDataSet dataSet = new LineDataSet(entries, "");
         dataSet.setLineWidth(5f);
         dataSet.setDrawCircles(true);
         dataSet.setValueTextSize(10f);
-        LineData lineData = new LineData(dataSet);
 
 
         LineDataSet idealDataSet = new LineDataSet(idealEntries, "");
@@ -101,7 +92,6 @@ public class ProfileFragment extends Fragment {
         idealDataSet.setDrawValues(false);
         idealDataSet.disableDashedHighlightLine();
         idealDataSet.setColor(Color.rgb(255,165,0));
-        LineData idealLineData = new LineData(idealDataSet);
 
 
         List<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
@@ -116,7 +106,7 @@ public class ProfileFragment extends Fragment {
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f);
-        xAxis.setValueFormatter(formatter);
+        xAxis.setValueFormatter(new MyXAxisValueFormatter(labels));
 
 
         YAxis leftYAxis = chart.getAxis(YAxis.AxisDependency.LEFT);
