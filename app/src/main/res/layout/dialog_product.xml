@@ -1,0 +1,228 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kenan.calorify.fragments.ProductDialogFragment"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/fsd_Brand_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/fsd_Food_Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="start"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Calories: " />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Total fat: " />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Saturated fat: " />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cholesterol: " />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sodium: " />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Total Carbohydrates: " />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sugars: " />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Proteins: " />
+
+
+                    <!-- Allergenen info niet nodig in deze view -->
+                    <!--
+                    <TextView
+                        android:id="@+id/fsd_Milk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Contains milk: " />
+
+                    <TextView
+                        android:id="@+id/fsd_Eggs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Contains eggs: " />
+
+                    <TextView
+                        android:id="@+id/fsd_Fish"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Contains fish: " />
+
+                    <TextView
+                        android:id="@+id/fsd_Shellfish"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Contains shellfish: " />
+
+                    <TextView
+                        android:id="@+id/fsd_Tree_Nuts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Contains tree nuts: " />
+
+                    <TextView
+                        android:id="@+id/fsd_Peanuts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Contains peanuts: " />
+
+                    <TextView
+                        android:id="@+id/fsd_Wheat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Contains wheat: " />
+
+                    <TextView
+                        android:id="@+id/fsd_Soybeans"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Contains soybeans: " />
+
+                    <TextView
+                        android:id="@+id/fsd_Gluten"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Contains gluten: " /> -->
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fsd_Calories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/fsd_Total_Fat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/fsd_Saturated_Fat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/fsd_Cholesterol"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/fsd_Sodium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/fsd_Total_Carbohydates"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/fsd_Sugars"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/fsd_Proteins"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_add_prod_to_scheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/add_product_button" />
+
+                <Button
+                    android:id="@+id/button_delete_prod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/delete_product" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

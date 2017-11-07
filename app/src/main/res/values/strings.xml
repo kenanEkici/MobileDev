@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Calorify</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="data_notification">Your profile is private and only stored locally</string>
+    <string name="button_register">Create a new profile</string>
+    <string name="slogan">Managing your consumption easier than ever</string>
+    <string name="action_settings">settings</string>
+    <string name="delete_account">Delete profile</string>
+    <string name="created_user">Profile successfully created!</string>
+    <string name="history">History scanned products</string>
+    <string name="scan_product">Scan new product</string>
+    <string name="hint_consume">Consumed amount</string>
+    <string name="add_product_button">Add product to scheme</string>
+    <string name="empty_products">You have not consumed anything yet!</string>
+    <string name="delete_product">Delete product</string>
+    <string name="internet">No internet connection!</string>
+    <string name="scanner">No scanner available, please install one!</string>
+    <string name="add_product">Add product</string>
+    <string name="settings">Settings</string>
+    <string name="clear_history">Clear scan history</string>
+    <string name="graph">Weight chart</string>
+    <string name="update_weight">Update weight</string>
+</resources>
