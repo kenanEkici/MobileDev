@@ -13,8 +13,11 @@ import android.widget.Spinner;
 
 import com.example.kenan.calorify.R;
 import com.example.kenan.calorify.dal.repos.UserRepository;
+import com.example.kenan.calorify.dal.repos.WeightRepository;
 import com.example.kenan.calorify.dl.enums.Gender;
 import com.example.kenan.calorify.dl.models.User;
+
+import org.joda.time.LocalDateTime;
 
 /**
  * Created by Kenan on 10/10/2017.
@@ -65,6 +68,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
                     Integer.parseInt(age.getText().toString()),true);
 
             UserRepository userRepository = new UserRepository();
+            WeightRepository weightRepository = new WeightRepository();
+            weightRepository.addWeight(user.getRegisterDate(), Double.valueOf(weight.getText().toString()));
             userRepository.addUser(user);
             return true;
         } catch (Exception ex){

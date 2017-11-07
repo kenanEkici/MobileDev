@@ -1,5 +1,6 @@
 package com.example.kenan.calorify.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -10,7 +11,9 @@ import android.widget.TextView;
 
 import com.example.kenan.calorify.R;
 import com.example.kenan.calorify.dal.repos.UserRepository;
+import com.example.kenan.calorify.dal.repos.WeightRepository;
 import com.example.kenan.calorify.dl.models.User;
+import com.example.kenan.calorify.dl.models.Weight;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
@@ -19,6 +22,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +56,6 @@ public class ProfileFragment extends Fragment {
 
 
         //Fill With Data
-
         nameText.setText(activeUser.getFullName());
         ageText.setText(Integer.toString(activeUser.getAge()));
         genderText.setText(activeUser.getGender().toString());
@@ -61,36 +64,49 @@ public class ProfileFragment extends Fragment {
         idealWeightText.setText(String.format("%.1f", activeUser.getIdealWeight()));
         BMIText.setText(String.format("%.2f", activeUser.getBmi()));
 
-
-
         //Profile chart
+        WeightRepository weightRepo = new WeightRepository();
+
         LineChart chart = (LineChart) view.findViewById(R.id.profile_Chart);
 
         List<Entry> entries = new ArrayList<Entry>();
+        List<Entry> idealEntries = new ArrayList<Entry>();
 
-        entries.add(new Entry(0f,80.0f));
-        entries.add(new Entry(1f,85.0f));
-        entries.add(new Entry(2f,90.0f));
-        entries.add(new Entry(3f,95.0f));
-        entries.add(new Entry(4f,100.0f));
+        ArrayList<String> labels = new ArrayList<String>();
+        List<Weight> weightList = weightRepo.getAllWeights();
 
-        
-        LineDataSet dataSet  = new LineDataSet(entries, "");
-        dataSet.setLineWidth(2f);
-        dataSet.setDrawCircles(true);
-        dataSet.setValueTextSize(8f);
-        LineData lineData = new LineData(dataSet);
+        for (int i = 0; i < weightList.size(); i++) {
+            entries.add(new Entry((float) i, (float) weightList.get(i).getWeight()));
+            idealEntries.add(new Entry((float) i, (float) activeUser.getIdealWeight()));
+            labels.add(weightList.get(i).getGraphDate());
+        }
 
-
-
-        final String[] labels = new String[] {"1/11","2/11","3/11","4/11","5/11"};
         IAxisValueFormatter formatter = new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float v, AxisBase axisBase) {
-                return labels[(int) v];
+                return (String) labels.toArray()[(int) v];
             }
         };
 
+        LineDataSet dataSet = new LineDataSet(entries, "");
+        dataSet.setLineWidth(5f);
+        dataSet.setDrawCircles(true);
+        dataSet.setValueTextSize(10f);
+        LineData lineData = new LineData(dataSet);
+
+
+        LineDataSet idealDataSet = new LineDataSet(idealEntries, "");
+        idealDataSet.setLineWidth(2f);
+        idealDataSet.setDrawCircles(false);
+        idealDataSet.setDrawValues(false);
+        idealDataSet.disableDashedHighlightLine();
+        idealDataSet.setColor(Color.rgb(255,165,0));
+        LineData idealLineData = new LineData(idealDataSet);
+
+
+        List<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+        dataSets.add(idealDataSet);
+        dataSets.add(dataSet);
 
 
         //Change axis
@@ -111,7 +127,8 @@ public class ProfileFragment extends Fragment {
         rightYAxis.setDrawLabels(false);
 
         chart.getDescription().setEnabled(false);
-        chart.setData(lineData);
+        LineData data =  new LineData(dataSets);
+        chart.setData(data);
         chart.getLegend().setEnabled(false);
         chart.invalidate();
 

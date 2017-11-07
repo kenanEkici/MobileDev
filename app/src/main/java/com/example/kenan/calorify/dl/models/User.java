@@ -1,5 +1,6 @@
 package com.example.kenan.calorify.dl.models;
 
+//import com.example.kenan.calorify.dal.repos.WeightRepository;
 import com.example.kenan.calorify.dl.enums.Gender;
 import com.orm.SugarRecord;
 
@@ -73,6 +74,11 @@ public class User extends SugarRecord<User> {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public void updateWeight(double weight){
+        setWeight(weight);
+
     }
 
     public double getHeight() {
