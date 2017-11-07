@@ -14,7 +14,8 @@
             android:layout_height="wrap_content"
             android:text="@string/data_notification"
             android:textSize="15sp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"/>
 
         <EditText
             android:layout_width="200dp"

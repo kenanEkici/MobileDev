@@ -84,7 +84,7 @@ public class ProfileFragment extends Fragment {
         IAxisValueFormatter formatter = new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float v, AxisBase axisBase) {
-                return (String) labels.toArray()[(int) v];
+                return "";
             }
         };
 
