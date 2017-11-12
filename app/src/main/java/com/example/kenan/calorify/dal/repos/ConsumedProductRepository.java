@@ -31,10 +31,10 @@ public class ConsumedProductRepository {
     }
 
     public void deleteProductFromScheme(ConsumedProduct product, Day day) {
-        double tempCalc = day.getTotalCalories() - product.getCalculatedCalories();
+        Day tempDay = new DayRepository().getDayForDate(LocalDate.parse(day.getDate()));
+        double tempCalc = tempDay.getTotalCalories() - product.getCalculatedCalories();
         if (tempCalc < 1)
             tempCalc = 0;
-        Day tempDay = new DayRepository().getDayForDate(LocalDate.parse(day.getDate()));
         tempDay.setTotalCalories(tempCalc);
         product.delete();
         tempDay.save();
