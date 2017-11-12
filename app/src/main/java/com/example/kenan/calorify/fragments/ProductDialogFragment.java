@@ -12,14 +12,17 @@ import android.widget.TextView;
 
 import com.example.kenan.calorify.R;
 import com.example.kenan.calorify.dal.repos.ConsumedProductRepository;
+import com.example.kenan.calorify.dal.repos.DayRepository;
 import com.example.kenan.calorify.dal.repos.ScannedProductRepository;
 import com.example.kenan.calorify.dl.models.ConsumedProduct;
+import com.example.kenan.calorify.dl.models.Day;
 import com.example.kenan.calorify.dl.models.ScannedProduct;
 import com.example.kenan.calorify.helpers.AuthenticationHelper;
 
 public class ProductDialogFragment extends DialogFragment {
 
     private ConsumedProduct openedConsumedProduct;
+    private Day parent;
 
     @NonNull
     @Override
@@ -66,9 +69,11 @@ public class ProductDialogFragment extends DialogFragment {
         } else {
             ConsumedProductRepository repo = new ConsumedProductRepository();
             ConsumedProduct p = repo.getProductByid(getArguments().getLong("productId"));
+
             addToScheme.setVisibility(View.GONE);
             args.putSerializable("consumedProduct", p);
             openedConsumedProduct = p;
+            parent = (Day) getArguments().getSerializable("parentDay");
 
             //Put the info in the textviews
             brandNameText.setText(p.getBrandName());
@@ -85,7 +90,7 @@ public class ProductDialogFragment extends DialogFragment {
 
         deleteProduct.setOnClickListener(v -> {
             if (openedConsumedProduct != null)
-            new ConsumedProductRepository().deleteProductFromScheme(openedConsumedProduct);
+            new ConsumedProductRepository().deleteProductFromScheme(openedConsumedProduct, parent);
             getDialog().dismiss();
             AuthenticationHelper.continueToMenu(getContext());
         });

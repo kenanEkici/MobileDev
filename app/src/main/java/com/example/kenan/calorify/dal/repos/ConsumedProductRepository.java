@@ -4,6 +4,8 @@ import com.example.kenan.calorify.dl.models.Day;
 import com.example.kenan.calorify.dl.models.ConsumedProduct;
 import com.example.kenan.calorify.dl.models.User;
 
+import org.joda.time.LocalDate;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,7 +30,13 @@ public class ConsumedProductRepository {
         return ConsumedProduct.listAll(ConsumedProduct.class);
     }
 
-    public void deleteProductFromScheme(ConsumedProduct product) {
+    public void deleteProductFromScheme(ConsumedProduct product, Day day) {
+        double tempCalc = day.getTotalCalories() - product.getCalculatedCalories();
+        if (tempCalc < 1)
+            tempCalc = 0;
+        Day tempDay = new DayRepository().getDayForDate(LocalDate.parse(day.getDate()));
+        tempDay.setTotalCalories(tempCalc);
         product.delete();
+        tempDay.save();
     }
 }

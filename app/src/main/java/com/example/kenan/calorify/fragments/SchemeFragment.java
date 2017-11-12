@@ -16,6 +16,8 @@ import com.example.kenan.calorify.dal.repos.SchemeRepository;
 import com.example.kenan.calorify.dl.models.ConsumedProduct;
 import com.example.kenan.calorify.fragments.adapters.CustomExpandableListAdapter;
 
+import org.joda.time.LocalDate;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -78,6 +80,7 @@ public class SchemeFragment extends Fragment {
                 ProductDialogFragment dialog = new ProductDialogFragment();
                 args.putLong("productId", schemeData.get(groupPosition).get(childPosition).getId());
                 args.putString("openedBy", "scheme");
+                args.putSerializable("parentDay", new DayRepository().getDayByIndex(groupPosition));
                 dialog.setArguments(args);
                 dialog.show(getFragmentManager(), "ProductDialogFragment");
 

@@ -20,4 +20,7 @@
     <string name="clear_history">Clear scan history</string>
     <string name="graph">Weight chart</string>
     <string name="update_weight">Update weight</string>
+    <string name="brand_name_identifier">Brand: </string>
+    <string name="calories_identifier">Calories: </string>
+    <string name="quantity_identifier">Quantity:</string>
 </resources>

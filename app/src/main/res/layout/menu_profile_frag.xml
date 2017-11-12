@@ -47,6 +47,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:text="Name: " />
 
@@ -54,6 +55,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:text="Age: " />
 
@@ -61,6 +63,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:text="Gender: " />
 
@@ -68,6 +71,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:text="Height(cm): " />
 
@@ -75,6 +79,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:text="Weight(kg): " />
 
@@ -82,6 +87,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:text="BMI: " />
 
@@ -89,6 +95,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:text="Ideal Weight(kg):" />
                 </LinearLayout>
@@ -110,36 +117,43 @@
                     <TextView
                         android:id="@+id/profile_Name"
                         android:layout_width="match_parent"
+                        android:textSize="15sp"
                         android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/profile_Age"
                         android:layout_width="match_parent"
+                        android:textSize="15sp"
                         android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/profile_Gender"
                         android:layout_width="match_parent"
+                        android:textSize="15sp"
                         android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/profile_Height"
                         android:layout_width="match_parent"
+                        android:textSize="15sp"
                         android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/profile_Weight"
                         android:layout_width="match_parent"
+                        android:textSize="15sp"
                         android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/profile_BMI"
                         android:layout_width="match_parent"
+                        android:textSize="15sp"
                         android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/profile_IdealWeight"
                         android:layout_width="match_parent"
+                        android:textSize="15sp"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 

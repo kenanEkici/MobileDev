@@ -30,6 +30,10 @@ public class DayRepository {
         return product;
     }
 
+    public Day getDayByIndex(int index){
+        return getAllDays().get(index);
+    }
+
     public void deleteEverything(){
         Day.deleteAll(Day.class);
     }
